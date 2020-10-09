@@ -1,0 +1,13 @@
+{
+    "project": [
+        {
+            "author": "Michael Peters",
+            "projectName": "guwt-admin-panel",
+            "version": "0.0.1",
+            "description": "this repository is for the admin panel of Gonzaga University AR Walking Tour",
+            "longDescription": "a React.js application for the Team 03 Senior Design project at Gonzaga University, where we are redesigning an admin panel to support functionality of our mobile AR application",
+            "githubLink": "https://github.com/michaelpeterswa/guwt-admin-panel",
+            "date": "10.09.2020"
+        }
+    ]
+}
