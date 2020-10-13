@@ -12,7 +12,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://guthub.com/michaelpeterswa/guwt-admin-panel"
+          href="https://github.com/michaelpeterswa/guwt-admin-panel"
           target="_blank"
           rel="noopener noreferrer"
         >
