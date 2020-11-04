@@ -1,22 +1,21 @@
-# guwt-admin-panel
+# Easy User Authentication for React Apps
 
-this repository is for the admin panel of Gonzaga University AR Walking Tour
+This repository hosts a React project that defines a Single-Page Application (SPA). You'll secure access to some of its routes using Auth0 User Authentication.
 
-> a React.js application for the Team 03 Senior Design project at Gonzaga University, where we are redesigning an admin panel to support functionality of our mobile AR application
+## Get Started
 
-## Installation
+Install the client project dependencies:
 
+```bash
+npm install
 ```
-git clone https://github.com/michaelpeterswa/guwt-admin-panel.git
+
+Run the client project:
+
+```bash
+npm start
 ```
 
-Or download the file manually.
+The application runs by on port `4040` to mitigate conflicting with other client applications you may be running.
 
-## Release History
-
-- 0.0.1
-  - Opened Repository (10.09.2020)
-
-## Meta
-
-Michael Peters - _enter additional contact information here_
+Visit [`http://localhost:4040/`](http://localhost:4040/) to access the starter application.
