@@ -6,11 +6,13 @@ import LoginButton from "../components/login-button.js"
 import LogoutButton from "../components/logout-button.js"
 
 const LoginView = () => (
-  <div>
+  <div style={{margin: 20},{textAlign: "center"}}>
     <br></br>
     <p>Welcome to Gonzaga's walking tour app, please press the login button below</p>
-    <LoginButton />
-    <LogoutButton />
+    <div>
+        <LoginButton />
+        <LogoutButton />
+    </div>
   </div>
 );
 
