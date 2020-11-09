@@ -1,17 +1,22 @@
+//loginView.js
+//The initial login view for the admin panel
+
 import React, { Fragment } from "react";
 
-import { Hero, HomeContent} from "../components";
-
+//import the login and logout buttons
 import LoginButton from "../components/login-button.js"
-import LogoutButton from "../components/logout-button.js"
+
+//import the css module
+import styles from "../css_modules/generalStyles.module.css";
 
 const LoginView = () => (
-  <div style={{margin: 20},{textAlign: "center"}}>
+  <div className={styles.generalStyle}>
     <br></br>
-    <p>Welcome to Gonzaga's walking tour app, please press the login button below</p>
+    <h1>Welcome to the Gonzaga's Walking Tour admin Page</h1>
+    <br></br>
+    <p>Please press the login button below</p>
     <div>
         <LoginButton />
-        <LogoutButton />
     </div>
   </div>
 );
