@@ -1,0 +1,23 @@
+.generalStyle {
+    background-color: darkslategray;
+    color: white;
+    padding: 10em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.buttonStyles {
+    background-color: white; /* Green */
+    border: black;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 4px;
+  }
+/* .loginViewStyles {
+    text-align: center;
+} */
