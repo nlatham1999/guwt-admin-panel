@@ -15,8 +15,14 @@
   "scripts": {
     "start": "cross-env PORT=4040 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --coverage --coverageDirectory=coverage/",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +40,8 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "@testing-library/react": "^11.1.2",
+    "cross-env": "^7.0.2",
+    "jest": "^26.6.3"
   }
 }
