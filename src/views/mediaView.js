@@ -8,8 +8,12 @@ const MediaView = () => {
 
     return (
         <div className={styles.generalStyle}>
+            <h1>This is the media view</h1>
             <p>
-                this is the media view
+                stuff to do:
+                <ul>connect to aws and display the media files</ul>
+                <ul>allow selection of media files</ul>
+                <ul>allow uploading of media files</ul>
             </p>
         </div>
     );

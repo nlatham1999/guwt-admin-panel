@@ -8,8 +8,13 @@ const MemberView = () => {
 
     return (
         <div className={styles.generalStyle}>
+            <h1>This is the member view</h1>
             <p>
-                this is the member view
+                Stuff to do:
+                <ul>
+                    <li>connect to aws and display media files</li>
+                    <li>enable uploading media files</li>
+                </ul>
             </p>
       </div>
     );

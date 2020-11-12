@@ -67,7 +67,7 @@ const ViewDropdown = ({setOrganizationViewChosen}) => {
     
     return (
       <div className="dropdown" ref={drop} >
-        <button onClick={() => setOpen(open => !open)}>select an organization</button>
+        <button onClick={() => setOpen(open => !open)}>select view</button>
         {
           open && 
           <ul>
