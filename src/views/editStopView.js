@@ -1,3 +1,6 @@
+//component for the edit stop view
+//access through the EditTour component
+
 import React, { Fragment, useState} from "react";
 import { render } from "react-dom";
 

@@ -1,6 +1,5 @@
-//selectOrganiationView.js
-
 //this is the view where the user selects their organization
+//accessed through the main App comonent
 
 import React, { Fragment, useState} from "react";
 import { render } from "react-dom";

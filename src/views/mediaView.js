@@ -1,3 +1,5 @@
+//component for the media view
+
 import React, { Fragment, useState} from "react";
 import { render } from "react-dom";
 
@@ -13,7 +15,7 @@ const MediaView = () => {
                 stuff to do:
                 <ul>connect to aws and display the media files</ul>
                 <ul>allow selection of media files</ul>
-                <ul>allow uploading of media files</ul>
+                <ul>allow uploading of media</ul>
             </p>
         </div>
     );
