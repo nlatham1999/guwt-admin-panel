@@ -18,23 +18,16 @@ import LogoutButton from "../components/logout-button.js"
 
 const Home = () => {
   
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
 
   return (
     <div className={styles.generalStyle}>
-      <h>
+      {/* <h>
         Hello {user.name}, welcome to the walking tour home:
-      </h>
+      </h> */}
       <p>
         this is the home view
       </p>
-      <p> stuff to do</p>
-      <ul>
-        <li>Make a navigation bar</li>
-        <li>add the list of tours</li>
-        <li>add a logout button</li>
-      </ul>
-      <LogoutButton />
     </div>
   );
 }
