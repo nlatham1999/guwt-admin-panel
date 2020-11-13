@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.1.0...v1.1.1) (2020-11-13)
+
+
+### Bug Fixes
+
+* removed --colors from Jest testing ([50e7744](https://github.com/michaelpeterswa/guwt-admin-panel/commit/50e774408a13db5ff50c405ad7ba320b3ef4e3bd))
+
 ## 1.1.0 (2020-11-13)
 
 
