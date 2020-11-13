@@ -15,7 +15,7 @@
   "scripts": {
     "start": "cross-env PORT=4040 react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --colors --coverage --coverageDirectory=coverage/",
+    "test": "jest --coverage --coverageDirectory=coverage/",
     "eject": "react-scripts eject",
     "release": "standard-version"
   },
