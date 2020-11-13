@@ -20,9 +20,7 @@ const ButtonWithDropDownCmp = () => {
 
   function handleSelection(selection){
     setOpen(false)
-
-    console.log("test")
-    console.log(selection);
+    
   }
   
   React.useEffect(() => {
