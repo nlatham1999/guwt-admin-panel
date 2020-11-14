@@ -33,8 +33,7 @@ Or download the file manually.
 
 ## Release History
 
-- 1.0.1
-  - Opened Repository (10.20.2020)
+See [Changelog.md](CHANGELOG.md)
 
 ## Meta
 
