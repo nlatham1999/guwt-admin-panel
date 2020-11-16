@@ -1,8 +1,7 @@
 import { shallow } from 'enzyme';
-import App from '../app.js';
 import React from "react";
+import SelectOrganization from '../selectOrganizationView';
 
 it("renders without crashing", () => {
-    shallow(<App />);
+    shallow(<SelectOrganization />);
 });
-
