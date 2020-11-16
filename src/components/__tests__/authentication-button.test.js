@@ -1,3 +1,7 @@
-test('default test', () => {
-    expect(true).toBe(true);
+import { shallow } from 'enzyme';
+import React from "react";
+import AuthenticationButton from '../authentication-button';
+
+it("renders without crashing", () => {
+    shallow(<AuthenticationButton />);
 });
