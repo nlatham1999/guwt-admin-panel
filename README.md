@@ -17,9 +17,13 @@
 	</strong>
 </p>
 <p align="center">
+  <img alt="Jenkins" src="https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.gonzagatours.app%2Fjob%2FGUWT%2520Admin%2520Panel%2520%28Gonzaga%2520University%2520AR%2520Walking%2520Tour%29%2F">
+  <img alt="Jenkins Coverage" src="https://img.shields.io/jenkins/coverage/cobertura?jobUrl=https%3A%2F%2Fci.gonzagatours.app%2Fjob%2FGUWT%2520Admin%2520Panel%2520%28Gonzaga%2520University%2520AR%2520Walking%2520Tour%29%2F">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/michaelpeterswa/guwt-admin-panel">
+  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/michaelpeterswa/guwt-admin-panel">
+  <img alt="Code Climate technical debt" src="https://img.shields.io/codeclimate/tech-debt/michaelpeterswa/guwt-admin-panel">
   <img alt="Made With Love" src="https://img.shields.io/badge/Made%20With-Love-orange.svg">
-	<img alt="Awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg">
+  <img alt="Awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg">
 </p>
 
 ## Installation
@@ -33,8 +37,7 @@ Or download the file manually.
 
 ## Release History
 
-- 1.0.1
-  - Opened Repository (10.20.2020)
+See [Changelog.md](CHANGELOG.md)
 
 ## Meta
 

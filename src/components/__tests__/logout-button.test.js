@@ -1,3 +1,7 @@
-test('default test', () => {
-    expect(true).toBe(true);
+import { shallow } from 'enzyme';
+import React from "react";
+import LogoutButton from "../logout-button";
+
+it("renders without crashing", () => {
+    shallow(<LogoutButton />);
 });
