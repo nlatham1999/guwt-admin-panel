@@ -14,7 +14,7 @@ const LoginView = () => {
   return(
     <div className={styles.generalStyle}>
       <br></br>
-      <h1>Welcome to the Gonzaga's Walking Tour admin Page</h1>
+      <h1>Gonzaga University Walking Tour Admin Panel</h1>
       <br></br>
       <p>Please press the login button below</p>
       <div>
