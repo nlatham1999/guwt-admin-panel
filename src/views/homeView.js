@@ -1,4 +1,5 @@
-//homeView.js
+//component for the home view
+//accessed thorugh the OrganizationMainPage component
 
 //this is the main page for the admin panel. 
 //It will hold a list of tours where the user can edit them or add a new tour

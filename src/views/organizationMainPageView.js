@@ -10,14 +10,15 @@ import MediaView from "./mediaView";
 
 //component for the main organization view
 //parameters:
-//  setOrgChosen: function that takes a bool and determines whether there has been an organization chosen or not
-const OrganizationMainPage = ({ setOrgChosen }) => {
+//  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
+//  organizationName: name of the organization chose
+const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
 
   return (
     <div>
-      <h1>Organization name: , username:</h1>
+      <h1>Organization name: {organizationName} , username:</h1>
       <LogoutButton />
       <p>this will be the top bar for all organization views and
       will contain a logout button, the organization name
