@@ -8,6 +8,29 @@ import OrganizationMainPage from "./organizationMainPageView";
 import { Route, Switch } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../components/logout-button";
+import axios from "axios";
+
+
+// function getOrganizations() {
+//   try {
+//     axios.get('https://backend.gonzagatours.app/api/organizations', {
+//       'headers': {
+//         'Authentication': process.env.REACT_APP_API_KEY
+//       },
+//     responseType: 'json',
+//      })
+//       .then(response => {
+//         var names = []
+//         var group
+//         for(group in response.data.data){
+//           names.push(response.data.data[group].name)
+//         }
+//         return names
+//       })
+//     } catch (e) {
+//       console.log("failed")
+//     }
+// }
 
 const SelectOrganization = () => {
     
@@ -55,9 +78,9 @@ const SelectOrganization = () => {
 const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
 
     const [open, setOpen] = React.useState(false);
+    const [responseData, setResponseData] = React.useState('');
     const drop = React.useRef(null);
-    const data = ["Gonzaga History Department", "Spokane Historical Scoiety"];
-  
+
     function handleClick(e) {
       if (!e.target.closest(`.${drop.current.className}`) && open) {
         setOpen(false);
@@ -71,6 +94,25 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
     }
   
     React.useEffect(() => {
+      try {
+        axios.get('https://backend.gonzagatours.app/api/organizations', {
+          'headers': {
+            'Authentication': process.env.REACT_APP_API_KEY
+          },
+        responseType: 'json',
+         })
+          .then(response => {
+            var names = []
+            var group
+            for(group in response.data.data){
+              names.push(response.data.data[group].name)
+            }
+            setResponseData(names)
+          })
+        } catch (e) {
+          console.log("failed")
+        }
+
       document.addEventListener("click", handleClick);
       return () => {
         document.removeEventListener("click", handleClick);
@@ -83,7 +125,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
         {
           open &&
           <ul>
-            {data.map((item, i) => (
+            {responseData.map((item, i) => (
               <li key={i} onClick={() => handleSelection(item)}>
                 {item}
               </li>
