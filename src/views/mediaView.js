@@ -1,8 +1,7 @@
 //component for the media view
 //accessed through the OrganizationMainPage component
 
-import React, { Fragment, useState} from "react";
-import { render } from "react-dom";
+import React from "react";
 
 //import the css module
 import styles from "../css_modules/generalStyles.module.css";

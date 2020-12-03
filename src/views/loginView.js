@@ -1,7 +1,7 @@
 //component for the initial login view for the admin panel
 //access through the main App component
 
-import React, { Fragment } from "react";
+import React from "react";
 
 //import the login and logout buttons
 import LoginButton from "../components/login-button.js"

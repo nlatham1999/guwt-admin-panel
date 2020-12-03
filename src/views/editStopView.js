@@ -1,12 +1,10 @@
 //component for the edit stop view
 //access through the EditTour component
 
-import React, { Fragment, useState} from "react";
-import { render } from "react-dom";
+import React from "react";
 
 //import the css module
 import styles from "../css_modules/generalStyles.module.css";
-import EditTour from "./editTourView";
 
 const EditStop = ({setEditStopMode}) => {
 

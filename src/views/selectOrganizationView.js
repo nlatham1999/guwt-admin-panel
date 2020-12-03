@@ -1,12 +1,8 @@
 //this is the view where the user selects their organization
 //accessed through the main App comonent
 
-import React, { Fragment, useState} from "react";
-import { render } from "react-dom";
-import ButtonWithDropDown from "../components/buttonDropDownCmp";
+import React, { useState} from "react";
 import OrganizationMainPage from "./organizationMainPageView";
-import { Route, Switch } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../components/logout-button";
 import axios from "axios";
 
@@ -61,7 +57,7 @@ const SelectOrganization = () => {
             <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationName={setOrganizationName} />
             
             {/* if an organization has been chosen then run goToOrganization() */}
-            {organizationChosen == true && goToOrganization()}
+            {organizationChosen === true && goToOrganization()}
 
             {/* display the logout button */}
             <LogoutButton />
