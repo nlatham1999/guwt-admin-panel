@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.3.0...v1.4.0) (2020-12-08)
+
+
+### Features
+
+* added basic bootstrap components ([157f04e](https://github.com/michaelpeterswa/guwt-admin-panel/commit/157f04ef860649168663388d85dff2199e98805d))
+
+
+### Bug Fixes
+
+* removed unused references and variables ([93261ba](https://github.com/michaelpeterswa/guwt-admin-panel/commit/93261ba22bed7e86f82a7214831d577bf44658c8))
+
 ## [1.3.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.2.0...v1.3.0) (2020-12-02)
 
 
