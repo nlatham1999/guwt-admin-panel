@@ -4,10 +4,11 @@ import React, { Fragment, useState} from "react";
 import { render } from "react-dom";
 
 //import the css module
-import styles from "../css_modules/generalStyles.module.css";
+// import styles from "../css_modules/generalStyles.module.css";
 
 //import the edit stop component
 import EditStop from "./editStopView";
+import Button from "react-bootstrap/Button";
 
 //edit tour component
 //parameters:
@@ -23,7 +24,7 @@ const EditTour = ({setTourEditMode}) => {
     }
 
     return (
-        <div className={styles.generalStyle}>
+        <div>
             <h1>This is the edit tour view</h1>
             <p>
             stuff to do:
@@ -32,8 +33,8 @@ const EditTour = ({setTourEditMode}) => {
                 <li>edit stops</li>
             </ul>
             </p>
-            <button onClick={() => goBackToHome()}>go back</button>
-            <button onClick={() => goToEditStop()}>edit stop</button>
+            <Button onClick={() => goBackToHome()}>go back</Button>
+            <Button onClick={() => goToEditStop()}>edit stop</Button>
         </div>
       );
 

@@ -5,12 +5,12 @@ import React, { Fragment, useState} from "react";
 import { render } from "react-dom";
 
 //import the css module
-import styles from "../css_modules/generalStyles.module.css";
+// import styles from "../css_modules/generalStyles.module.css";
 
 const MediaView = () => {
 
     return (
-        <div className={styles.generalStyle}>
+        <div>
             <h1>This is the media view</h1>
             <p>
                 stuff to do:
