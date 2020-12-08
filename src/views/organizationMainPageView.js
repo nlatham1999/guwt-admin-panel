@@ -7,6 +7,8 @@ import LogoutButton from "../components/logout-button";
 import Home from "./homeView";
 import MemberView from "./memberView";
 import MediaView from "./mediaView";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 //component for the main organization view
 //parameters:
@@ -17,21 +19,21 @@ const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
 
   return (
-    <div>
+    <Container class="p-3">
       <h1>Organization name: {organizationName} , username:</h1>
       <LogoutButton />
       <p>this will be the top bar for all organization views and
       will contain a logout button, the organization name
                  and a sidebar menu to navigate to the different views, and a go back button</p>
       <p>right now there is a dropdown menu instead of the sidebar</p>
-      <button onClick={() => goBackToChooseOrganization()}>go back</button>
+      <Button onClick={() => goBackToChooseOrganization()}>go back</Button>
       <ViewDropdown setOrganizationViewChosen={setOrganizationViewChosen} />
 
 
-      {organizationViewChosen == "home view" && <Home />}
-      {organizationViewChosen == "member view" && <MemberView />}
-      {organizationViewChosen == "media view" && <MediaView />}
-    </div>
+      {organizationViewChosen === "home view" && <Home />}
+      {organizationViewChosen === "member view" && <MemberView />}
+      {organizationViewChosen === "media view" && <MediaView />}
+    </Container>
 
   );
 
@@ -67,19 +69,20 @@ const ViewDropdown = ({ setOrganizationViewChosen }) => {
   });
 
   return (
-    <div className="dropdown" ref={drop} >
-      <button onClick={() => setOpen(open => !open)}>select view</button>
-      {
-        open &&
-        <ul>
-          {data.map((item, i) => (
-            <li key={i} onClick={() => handleSelection(item)}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      }
-    </div>
+    
+      <div className="dropdown" ref={drop} >
+        <Button onClick={() => setOpen(open => !open)}>select view</Button>
+        {
+          open &&
+          <ul>
+            {data.map((item, i) => (
+              <li key={i} onClick={() => handleSelection(item)}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        }
+      </div>
   );
 };
 

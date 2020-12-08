@@ -9,28 +9,8 @@ import { Route, Switch } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../components/logout-button";
 import axios from "axios";
-
-
-// function getOrganizations() {
-//   try {
-//     axios.get('https://backend.gonzagatours.app/api/organizations', {
-//       'headers': {
-//         'Authentication': process.env.REACT_APP_API_KEY
-//       },
-//     responseType: 'json',
-//      })
-//       .then(response => {
-//         var names = []
-//         var group
-//         for(group in response.data.data){
-//           names.push(response.data.data[group].name)
-//         }
-//         return names
-//       })
-//     } catch (e) {
-//       console.log("failed")
-//     }
-// }
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 const SelectOrganization = () => {
     
@@ -45,7 +25,7 @@ const SelectOrganization = () => {
         );
     }
     return (
-        <div>
+        <Container class="p-3">
             <h1>This is the select organization view</h1>
             <h2>Need to do:</h2>
             <ul>
@@ -65,7 +45,7 @@ const SelectOrganization = () => {
 
             {/* display the logout button */}
             <LogoutButton />
-        </div>
+        </Container>
     );
 
     function goToOrganization(){
@@ -121,7 +101,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
   
     return (
       <div className="dropdown" ref={drop} >
-        <button onClick={() => setOpen(open => !open)}>Select an Organization</button>
+        <Button onClick={() => setOpen(open => !open)}>Select an Organization</Button>
         {
           open &&
           <ul>

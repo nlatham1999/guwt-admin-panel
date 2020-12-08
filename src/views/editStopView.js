@@ -3,15 +3,16 @@
 
 import React, { Fragment, useState} from "react";
 import { render } from "react-dom";
+import Button from "react-bootstrap/Button";
 
 //import the css module
-import styles from "../css_modules/generalStyles.module.css";
+// import styles from "../css_modules/generalStyles.module.css";
 import EditTour from "./editTourView";
 
 const EditStop = ({setEditStopMode}) => {
 
     return (
-        <div className={styles.generalStyle}>
+        <div>
             <h1>This is the edit stop view</h1>
             <p>
             stuff to do:
@@ -20,7 +21,7 @@ const EditStop = ({setEditStopMode}) => {
                 <li>get google maps plugin</li>
             </ul>
             </p>
-            <button onClick={() => goBackToTourEdit()}>go back</button>
+            <Button onClick={() => goBackToTourEdit()}>go back</Button>
         </div>
     );
 
