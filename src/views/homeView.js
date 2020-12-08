@@ -6,13 +6,11 @@
 //there will also be a side bar to go to the other tours
 //there should also be a logout button at the topa
 
-import React, { Fragmen, useState } from "react";
+import React, { useState } from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from "react-bootstrap/Button";
 
-//import the css module
-// import styles from "../css_modules/generalStyles.module.css";
 
 import EditTour from "./editTourView";
 

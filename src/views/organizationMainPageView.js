@@ -1,8 +1,6 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
-import React, { Fragment, useState } from "react";
-import { render } from "react-dom";
-
+import React, { useState } from "react";
 import LogoutButton from "../components/logout-button";
 import Home from "./homeView";
 import MemberView from "./memberView";

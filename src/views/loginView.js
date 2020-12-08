@@ -1,7 +1,8 @@
 //component for the initial login view for the admin panel
 //access through the main App component
 
-import React, { Fragment } from "react";
+
+import React from "react";
 import { Jumbotron } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 
