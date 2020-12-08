@@ -8,10 +8,9 @@
 
 import React, { useState } from "react";
 
-//
-//import the css module
+import { useAuth0 } from "@auth0/auth0-react";
+import Button from "react-bootstrap/Button";
 
-import styles from "../css_modules/generalStyles.module.css";
 
 import EditTour from "./editTourView";
 
@@ -28,7 +27,7 @@ const Home = () => {
   }
 
   return (
-    <div className={styles.generalStyle}>
+    <div>
       <h1>This is the home view</h1>
       <p>
         stuff to do:
@@ -39,7 +38,7 @@ const Home = () => {
           <li>add new tours</li>
         </ul>
       </p>
-      <button onClick={() => editTourButton()}>edit/create new tour</button>
+      <Button onClick={() => editTourButton()}>edit/create new tour</Button>
     </div>
   );
 
