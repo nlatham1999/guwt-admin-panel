@@ -27,7 +27,6 @@ const Home = () => {
   return (
     <div>
       <h1>This is the home view</h1>
-      <p>
         stuff to do:
         <ul>
           <li>view tours</li>
@@ -35,7 +34,6 @@ const Home = () => {
           <li>edit tours</li>
           <li>add new tours</li>
         </ul>
-      </p>
       <Button onClick={() => editTourButton()}>edit/create new tour</Button>
     </div>
   );

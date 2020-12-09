@@ -1,31 +1,30 @@
 //component for the media view
 //accessed through the OrganizationMainPage component
-
-import React, { Fragment, useState} from "react";
-import { render } from "react-dom";
+import React, { useState } from "react";
 import pic from '../images/college-hall.jpg'
 
+
 //import the css module
-import styles from "../css_modules/generalStyles.module.css";
+// import styles from "../css_modules/generalStyles.module.css";
 
 const MediaView = () => {
-    const randomTestText = useState("Images Available");
+    const randomTestText = "Images Available";
     const [isClicked, setisClicked] = useState(false);
-    const [open, setOpen] = React.useState(false);
+    // const [open, setOpen] = React.useState(false);
 
-        return (
-        <div className={styles.generalStyle}>
+    return (
+        <div>
             <h1>This is the media view</h1>
-            <p>
                 stuff to do:
-                <ul>connect to aws and display the media files</ul>
-                <ul>allow selection of media files</ul>
-                <ul>allow uploading of media</ul>
-            </p>
+                <ul>
+                    <li>connect to aws and display the media files</li>
+                    <li>allow selection of media files</li>
+                    <li>allow uploading of media</li>
+                </ul>
             <button onClick={() => displayMedia()}>Display Available Media</button>
             {
-                isClicked == true &&
-                <div className={styles.leftColumnStyle}>
+                isClicked === true &&
+                <div>
                 <h1>
                     {randomTestText}
                 </h1>
