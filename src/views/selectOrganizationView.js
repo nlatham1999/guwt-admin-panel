@@ -7,6 +7,7 @@ import LogoutButton from "../components/logout-button";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import NewOrganization from "../components/newOrganization";
 
 const SelectOrganization = () => {
     
@@ -14,6 +15,7 @@ const SelectOrganization = () => {
     // const username = user.name;
     const [organizationName, setOrganizationName] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
+    const [addNewOrganization, setAddNewOrganization] = useState(false);
 
     if(organizationChosen){
         return (
@@ -41,6 +43,13 @@ const SelectOrganization = () => {
 
             {/* display the logout button */}
             <LogoutButton />
+
+            {/* sets up adding a new organization */}
+            <br></br>
+            <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
+            {addNewOrganization == true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
+
+            
         </Container>
     );
 
@@ -54,7 +63,7 @@ const SelectOrganization = () => {
 const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
 
     const [open, setOpen] = React.useState(false);
-    const [responseData, setResponseData] = React.useState('');
+    const [responseData, setResponseData] = React.useState([""]);
     const drop = React.useRef(null);
 
     function handleClick(e) {
