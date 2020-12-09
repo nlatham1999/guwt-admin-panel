@@ -19,8 +19,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
 
     function deleteTheOrganization(){
         axios.delete(
-            'https://backend.gonzagatours.app/api/organization',
-            organizationData,
+            'https://backend.gonzagatours.app/api/organizations/' + organizationData._id,
             {
                 'headers': {
                     'Authentication': process.env.REACT_APP_API_KEY
