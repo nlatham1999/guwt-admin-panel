@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const DeleteOrganization = ({organizationName, setOrgChosen}) => {
+const DeleteOrganization = ({organizationData, setOrgChosen}) => {
 
     
     return (
@@ -18,16 +18,9 @@ const DeleteOrganization = ({organizationName, setOrgChosen}) => {
     );
 
     function deleteTheOrganization(){
-        const data = {
-            name: organizationName,
-            department: " ",
-            admin: " "
-
-        }
-
         axios.delete(
             'https://backend.gonzagatours.app/api/organization',
-            data,
+            organizationData,
             {
                 'headers': {
                     'Authentication': process.env.REACT_APP_API_KEY
@@ -36,9 +29,6 @@ const DeleteOrganization = ({organizationName, setOrgChosen}) => {
                 setOrgChosen(false)
             )
     }
-
-   
-
 }
 
 export default DeleteOrganization;

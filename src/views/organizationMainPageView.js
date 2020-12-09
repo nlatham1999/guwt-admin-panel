@@ -13,16 +13,16 @@ import DeleteOrganization from "../components/deleteOrganization";
 //parameters:
 //  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
 //  organizationName: name of the organization chose
-const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
+const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
 
   return (
     <Container class="p-3">
-      <h1>Organization name: {organizationName} , username:</h1>
+      <h1>Organization name: {organizationData.name} , username:</h1>
       <LogoutButton />
       
-      <DeleteOrganization organizationName={organizationName} setOrgChosen={setOrgChosen}/>
+      <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
 
 
       <p>this will be the top bar for all organization views and

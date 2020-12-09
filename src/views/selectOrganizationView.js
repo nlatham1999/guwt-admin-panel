@@ -13,13 +13,13 @@ const SelectOrganization = () => {
     
     // const { user } = useAuth0();
     // const username = user.name;
-    const [organizationName, setOrganizationName] = useState("temp org");
+    const [organizationData, setOrganizationData] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
     const [addNewOrganization, setAddNewOrganization] = useState(false);
 
     if(organizationChosen){
         return (
-            <OrganizationMainPage setOrgChosen={setOrganizationChosen} organizationName={organizationName}/>
+            <OrganizationMainPage setOrgChosen={setOrganizationChosen} organizationData={organizationData}/>
         );
     }
     return (
@@ -36,7 +36,7 @@ const SelectOrganization = () => {
             </ul>
 
             {/* display the dropdown for an organization */}
-            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationName={setOrganizationName} />
+            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
             
             {/* if an organization has been chosen then run goToOrganization() */}
             {organizationChosen === true && goToOrganization()}
@@ -60,7 +60,7 @@ const SelectOrganization = () => {
 }
 
 //dropdown button to choose an organization
-const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
+const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
 
     const [open, setOpen] = React.useState(false);
     const [responseData, setResponseData] = React.useState([""]);
@@ -73,7 +73,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
     }
   
     function handleSelection(selection) {
-      setOrganizationName(selection);
+      setOrganizationData(selection);
       setOrganizationChosen(true)
       setOpen(false);
     }
@@ -87,12 +87,12 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
         responseType: 'json',
          })
           .then(response => {
-            var names = []
+            var data = []
             var group
             for(group in response.data.data){
-              names.push(response.data.data[group].name)
+              data.push(response.data.data[group])
             }
-            setResponseData(names)
+            setResponseData(data)
           })
         } catch (e) {
           console.log("failed")
@@ -112,7 +112,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
           <ul>
             {responseData.map((item, i) => (
               <li key={i} onClick={() => handleSelection(item)}>
-                {item}
+                {item.name}
               </li>
             ))}
           </ul>
