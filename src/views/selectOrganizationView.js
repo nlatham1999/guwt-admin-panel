@@ -82,7 +82,6 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
       try {
         axios.get('https://backend.gonzagatours.app/api/organizations', {
           'headers': {
-            // 'Authentication' : 'Api-Key b0cc6685-05e0-43e9-bacc-1ebf48c6929e'
             'Authentication': process.env.REACT_APP_API_KEY
           },
         responseType: 'json',
