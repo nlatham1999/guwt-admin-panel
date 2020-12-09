@@ -5,6 +5,7 @@ import LogoutButton from "../components/logout-button";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NewOrganization = ({setAddNewOrganization}) => {
@@ -14,22 +15,33 @@ const NewOrganization = ({setAddNewOrganization}) => {
     const { user } = useAuth0();
 
     return (
-        <div>
-            <label htmlFor='org name'>enter the organization name</label>
-            <input 
-                name = 'org name'
-                onChange = {setNameFromInput}
-            />
-            <br></br>
-            <label htmlFor='org department'>enter the organization's category</label>
-            <input 
-                name = 'org department'
-                onChange = {setDepartmentFromInput}
-            />
-            <br></br>
-            <Button onClick={() => addOrganization()}>add organization</Button>
-            <Button onClick={() => cancelAdding()}>cancel</Button>
-        </div>
+
+        <>
+        <Modal show={true} onHide={cancelAdding} centered>
+            <Modal.Header closeButton>
+                <Modal.Title>Add New Organization</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+                <label htmlFor='org name'>organization name:</label>
+                <input 
+                    name = 'org name'
+                    onChange = {setNameFromInput}
+                />
+                <br></br>
+                <label htmlFor='org department'>organization department:</label>
+                <input 
+                    name = 'org department'
+                    onChange = {setDepartmentFromInput}
+                />
+            </Modal.Body>
+
+            <Modal.Footer>
+                <Button variant="secondary" onClick={() => cancelAdding()}>Cancel</Button>
+                <Button variant="primary" onClick={() => addOrganization()}>Add Organization</Button>
+            </Modal.Footer>
+        </Modal>
+        </>
     );
 
     function addOrganization(){
