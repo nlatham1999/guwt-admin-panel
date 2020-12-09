@@ -7,19 +7,17 @@ import LogoutButton from "../components/logout-button";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import NewOrganization from "../components/newOrganization";
 
 const SelectOrganization = () => {
     
     // const { user } = useAuth0();
     // const username = user.name;
-    const [organizationData, setOrganizationData] = useState("temp org");
+    const [organizationName, setOrganizationName] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
-    const [addNewOrganization, setAddNewOrganization] = useState(false);
 
     if(organizationChosen){
         return (
-            <OrganizationMainPage setOrgChosen={setOrganizationChosen} organizationData={organizationData}/>
+            <OrganizationMainPage setOrgChosen={setOrganizationChosen} organizationName={organizationName}/>
         );
     }
     return (
@@ -36,20 +34,13 @@ const SelectOrganization = () => {
             </ul>
 
             {/* display the dropdown for an organization */}
-            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
+            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationName={setOrganizationName} />
             
             {/* if an organization has been chosen then run goToOrganization() */}
             {organizationChosen === true && goToOrganization()}
 
             {/* display the logout button */}
             <LogoutButton />
-
-            {/* sets up adding a new organization */}
-            <br></br>
-            <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-            {addNewOrganization == true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
-
-            
         </Container>
     );
 
@@ -60,10 +51,10 @@ const SelectOrganization = () => {
 }
 
 //dropdown button to choose an organization
-const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
+const ViewDropdown = ({ setOrganizationChosen, setOrganizationName}) => {
 
     const [open, setOpen] = React.useState(false);
-    const [responseData, setResponseData] = React.useState([""]);
+    const [responseData, setResponseData] = React.useState('');
     const drop = React.useRef(null);
 
     function handleClick(e) {
@@ -73,7 +64,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     }
   
     function handleSelection(selection) {
-      setOrganizationData(selection);
+      setOrganizationName(selection);
       setOrganizationChosen(true)
       setOpen(false);
     }
@@ -87,12 +78,12 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
         responseType: 'json',
          })
           .then(response => {
-            var data = []
+            var names = []
             var group
             for(group in response.data.data){
-              data.push(response.data.data[group])
+              names.push(response.data.data[group].name)
             }
-            setResponseData(data)
+            setResponseData(names)
           })
         } catch (e) {
           console.log("failed")
@@ -112,7 +103,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
           <ul>
             {responseData.map((item, i) => (
               <li key={i} onClick={() => handleSelection(item)}>
-                {item.name}
+                {item}
               </li>
             ))}
           </ul>
