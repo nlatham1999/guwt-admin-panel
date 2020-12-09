@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/newOrganization";
 import { Dropdown, DropdownButton } from "react-bootstrap"; 
 
+
 const SelectOrganization = () => {
     
     const [organizationData, setOrganizationData] = useState("temp org");
@@ -36,19 +37,17 @@ const SelectOrganization = () => {
 
             {/* display the dropdown for an organization */}
             <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
+
             
             {/* if an organization has been chosen then run goToOrganization() */}
             {organizationChosen === true && goToOrganization()}
 
             {/* display the logout button */}
             <LogoutButton />
-
             {/* sets up adding a new organization */}
             <br></br>
             <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
             {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
-
-            
         </Container>
     );
 
