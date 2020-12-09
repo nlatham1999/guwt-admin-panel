@@ -1,13 +1,18 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
 import React, { useState } from "react";
-import LogoutButton from "../components/logout-button";
+
 import Home from "./homeView";
 import MemberView from "./memberView";
 import MediaView from "./mediaView";
+
 import { Container } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Form from "react-bootstrap/Form";
 import DeleteOrganization from "../components/deleteOrganization";
+import LogoutButton from "../components/logout-button";
 
 
 //component for the main organization view
@@ -17,80 +22,51 @@ import DeleteOrganization from "../components/deleteOrganization";
 const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
-  const orgName = organizationData.name;
 
   return (
 
-    <Container className="p-3">
+    <Container>
       {/* add username somehow while passing tests -- i'm too tired (michael) */}
-      <h1>Organization name: {orgName} , username:</h1>
-      <LogoutButton />
+      <OrganizationNavigationBar organizationData={organizationData} setOrganizationViewChosen={setOrganizationViewChosen} setOrgChosen={setOrgChosen}/>
       
-      <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
-
-
-      <p>this will be the top bar for all organization views and
-      will contain a logout button, the organization name
-                 and a sidebar menu to navigate to the different views, and a go back button</p>
-      <p>right now there is a dropdown menu instead of the sidebar</p>
-      <Button onClick={() => goBackToChooseOrganization()}>go back</Button>
-      <ViewDropdown setOrganizationViewChosen={setOrganizationViewChosen} />
-
-
       {organizationViewChosen === "home view" && <Home />}
       {organizationViewChosen === "member view" && <MemberView />}
       {organizationViewChosen === "media view" && <MediaView />}
     </Container>
 
   );
-
-  function goBackToChooseOrganization() {
-    setOrgChosen(false);
-  }
 }
 
-//dropdown button to choose between views
-//this is temporary until we implement a side bar
-const ViewDropdown = ({ setOrganizationViewChosen }) => {
-
-  const [open, setOpen] = React.useState(false);
-  const drop = React.useRef(null);
-  const data = ["home view", "member view", "media view"];
-
-  function handleClick(e) {
-    if (!e.target.closest(`.${drop.current.className}`) && open) {
-      setOpen(false);
-    }
-  }
-
-  function handleSelection(selection) {
-    setOrganizationViewChosen(selection);
-    setOpen(false);
-  }
-
-  React.useEffect(() => {
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  });
-
+const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen, setOrgChosen}) => {
   return (
-    
-      <div className="dropdown" ref={drop} >
-        <Button onClick={() => setOpen(open => !open)}>select view</Button>
-        {
-          open &&
-          <ul>
-            {data.map((item, i) => (
-              <li key={i} onClick={() => handleSelection(item)}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        }
-      </div>
+    <Navbar bg="light" expand="lg" style={{marginLeft: "0"}}>
+      <Navbar.Brand>
+        <img
+          src="https://i.imgur.com/VxWiFjF.jpeg"
+          width="50"
+          height="50"
+          alt="GUWT logo"
+        />{' '}
+        {organizationData.name}
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <NavDropdown title="Views" id="basic-nav-dropdown">
+            <NavDropdown.Item onClick={() => setOrganizationViewChosen("home view")}>Home</NavDropdown.Item >
+            <NavDropdown.Item  onClick={() => setOrganizationViewChosen("member view")}>Members</NavDropdown.Item >
+            <NavDropdown.Item  onClick={() => setOrganizationViewChosen("media view")}>Media</NavDropdown.Item >
+            <NavDropdown.Divider />
+            <NavDropdown.Item onClick={() => setOrgChosen(false)}>Return to Select</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Form inline>
+          <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
+          <LogoutButton />
+        </Form>
+  </Navbar.Collapse>
+</Navbar>
   );
-};
+}
 
 export default OrganizationMainPage;

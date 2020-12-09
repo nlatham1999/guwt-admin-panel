@@ -8,7 +8,8 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/newOrganization";
-import { Dropdown, DropdownButton } from "react-bootstrap"; 
+import { Dropdown, DropdownButton, Modal } from "react-bootstrap"; 
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const SelectOrganization = () => {
@@ -23,7 +24,7 @@ const SelectOrganization = () => {
         );
     }
     return (
-        <Container class="p-3">
+        <Container className="p-3">
             <h1>Select Organization</h1>
             <h2>Need to do:</h2>
             <ul>
@@ -62,18 +63,32 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
 
     const [open, setOpen] = React.useState(false);
     const [responseData, setResponseData] = React.useState([""]);
+    const [isAdminOfOrganization, setIsAdminOfOrganization] = React.useState(true);
     const drop = React.useRef(null);
+    const {user} = useAuth0();
 
     function handleClick(e) {
       if (!e.target.closest(`.${drop.current.className}`) && open) {
         setOpen(false);
       }
     }
-  
+    
+    function isUserTheAdmin(selection) {
+        if(user.name === selection.admin){
+          return true
+        }
+        return false
+    }
+
+
     function handleSelection(selection) {
-      setOrganizationData(selection);
-      setOrganizationChosen(true)
-      setOpen(false);
+      if(isUserTheAdmin(selection)){
+        setOrganizationData(selection);
+        setOrganizationChosen(true)
+        setOpen(false);
+      }else{
+        setIsAdminOfOrganization(false)
+      }
     }
   
     React.useEffect(() => {
@@ -111,6 +126,14 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
               </Dropdown.Item>
             ))}
         </DropdownButton>
+        <Modal show={!isAdminOfOrganization} onHide={() => setIsAdminOfOrganization(true)}>
+              <Modal.Body>
+                  <p>You are not part of this organization</p>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={() => setIsAdminOfOrganization(true)}>OK</Button>
+              </Modal.Footer>
+        </Modal>
       </div>
     );
   };

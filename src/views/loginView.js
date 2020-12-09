@@ -15,7 +15,7 @@ import LoginButton from "../components/login-button.js"
 const LoginView = () => {
 
   return(
-    <Container class="p-3">
+    <Container className="p-3">
       <Jumbotron>
       <br></br>
       <h1>Gonzaga University Walking Tour Admin Panel</h1>
