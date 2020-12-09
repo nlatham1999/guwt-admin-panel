@@ -1,8 +1,8 @@
 //component for the media view
 //accessed through the OrganizationMainPage component
-
 import React, { useState } from "react";
 import pic from '../images/college-hall.jpg'
+
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";

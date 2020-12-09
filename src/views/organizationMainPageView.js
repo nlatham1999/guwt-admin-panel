@@ -9,15 +9,18 @@ import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import DeleteOrganization from "../components/deleteOrganization";
 
+
 //component for the main organization view
 //parameters:
 //  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
 //  organizationName: name of the organization chose
-const OrganizationMainPage = ({ user, setOrgChosen, organizationData }) => {
+const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
+
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
   const orgName = organizationData.name;
 
   return (
+
     <Container className="p-3">
       {/* add username somehow while passing tests -- i'm too tired (michael) */}
       <h1>Organization name: {orgName} , username:</h1>
