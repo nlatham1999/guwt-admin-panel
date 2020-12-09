@@ -13,7 +13,7 @@ const DeleteOrganization = ({organizationName, setOrgChosen}) => {
     return (
 
         <>
-            <Button onClick={deleteTheOrganization}>Delete Organization</Button>
+            <Button onClick={() => deleteTheOrganization}>Delete Organization</Button>
         </>
     );
 
