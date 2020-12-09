@@ -14,7 +14,7 @@ import DeleteOrganization from "../components/deleteOrganization";
 //parameters:
 //  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
 //  organizationName: name of the organization chose
-const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
+const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
   const orgName = organizationData.name;
