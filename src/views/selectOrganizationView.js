@@ -24,7 +24,7 @@ const SelectOrganization = () => {
     }
     return (
         <Container class="p-3">
-            <h1>This is the select organization view</h1>
+            <h1>Select Organization</h1>
             <h2>Need to do:</h2>
             <ul>
                 <li>connect to the aws and get a list of organizations</li>
