@@ -42,8 +42,8 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen, setOrgChosen}) => {
   return (
     <Navbar>
-      <Navbar.Brand as="li">
-        <h4>{organizationData.name}</h4>
+      <Navbar.Brand>
+        {organizationData.name}
       </Navbar.Brand>
       <Nav variant="pills">
           <Nav.Link onClick={() => setOrganizationViewChosen("home view")}>Home</Nav.Link>

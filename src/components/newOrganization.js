@@ -15,7 +15,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
     return (
 
         <>
-        <Modal show={true} onHide={cancelAdding} centered>
+        <Modal show={true} onHide={() => cancelAdding} centered>
             <Modal.Header closeButton>
                 <Modal.Title>Add New Organization</Modal.Title>
             </Modal.Header>
