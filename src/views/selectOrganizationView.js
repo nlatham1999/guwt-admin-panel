@@ -1,41 +1,56 @@
 //this is the view where the user selects their organization
 //accessed through the main App comonent
 
-import React, { Fragment, useState} from "react";
-import { render } from "react-dom";
-import ButtonWithDropDown from "../components/buttonDropDownCmp";
+import React, { useState} from "react";
 import OrganizationMainPage from "./organizationMainPageView";
-import { Route, Switch } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../components/logout-button";
+import axios from "axios";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import NewOrganization from "../components/newOrganization";
 
 const SelectOrganization = () => {
     
     // const { user } = useAuth0();
     // const username = user.name;
-    const [organizationName, setOrganizationName] = useState("temp org");
+    const [organizationData, setOrganizationData] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
+    const [addNewOrganization, setAddNewOrganization] = useState(false);
 
     if(organizationChosen){
         return (
-            <OrganizationMainPage setOrgChosen = {setOrganizationChosen}/>
+            <OrganizationMainPage setOrgChosen={setOrganizationChosen} organizationData={organizationData}/>
         );
     }
     return (
-        <div>
+        <Container class="p-3">
             <h1>This is the select organization view</h1>
             <h2>Need to do:</h2>
             <ul>
                 <li>connect to the aws and get a list of organizations</li>
                 <li>create a dropdown or a list with tours</li>
-                <li>if a tour is selected, check to make sure that the user has access</li>
+                <li>if a organization is selected, check to make sure that the user has access</li>
                 <li> if not then as if they want to request access</li>
                 <li>if so then go to the organziation main page</li>
                 <li>add a create organization button</li>
             </ul>
-            <button onClick={() => goToOrganization()}>Temporary button to go to the organization main page</button>
+
+            {/* display the dropdown for an organization */}
+            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
+            
+            {/* if an organization has been chosen then run goToOrganization() */}
+            {organizationChosen === true && goToOrganization()}
+
+            {/* display the logout button */}
             <LogoutButton />
-        </div>
+
+            {/* sets up adding a new organization */}
+            <br></br>
+            <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
+            {addNewOrganization == true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
+
+            
+        </Container>
     );
 
     function goToOrganization(){
@@ -43,5 +58,67 @@ const SelectOrganization = () => {
         setOrganizationChosen(true);
     }
 }
+
+//dropdown button to choose an organization
+const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
+
+    const [open, setOpen] = React.useState(false);
+    const [responseData, setResponseData] = React.useState([""]);
+    const drop = React.useRef(null);
+
+    function handleClick(e) {
+      if (!e.target.closest(`.${drop.current.className}`) && open) {
+        setOpen(false);
+      }
+    }
+  
+    function handleSelection(selection) {
+      setOrganizationData(selection);
+      setOrganizationChosen(true)
+      setOpen(false);
+    }
+  
+    React.useEffect(() => {
+      try {
+        axios.get('https://backend.gonzagatours.app/api/organizations', {
+          'headers': {
+            'Authentication': process.env.REACT_APP_API_KEY
+          },
+        responseType: 'json',
+         })
+          .then(response => {
+            var data = []
+            var group
+            for(group in response.data.data){
+              data.push(response.data.data[group])
+            }
+            setResponseData(data)
+          })
+        } catch (e) {
+          console.log("failed")
+        }
+
+      document.addEventListener("click", handleClick);
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    });
+  
+    return (
+      <div className="dropdown" ref={drop} >
+        <Button onClick={() => setOpen(open => !open)}>Select an Organization</Button>
+        {
+          open &&
+          <ul>
+            {responseData.map((item, i) => (
+              <li key={i} onClick={() => handleSelection(item)}>
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        }
+      </div>
+    );
+  };
 
 export default SelectOrganization;

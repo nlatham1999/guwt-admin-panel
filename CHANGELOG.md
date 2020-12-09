@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.4.0...v1.4.1) (2020-12-08)
+
+## [1.4.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.3.0...v1.4.0) (2020-12-08)
+
+
+### Features
+
+* added basic bootstrap components ([157f04e](https://github.com/michaelpeterswa/guwt-admin-panel/commit/157f04ef860649168663388d85dff2199e98805d))
+
+
+### Bug Fixes
+
+* removed unused references and variables ([93261ba](https://github.com/michaelpeterswa/guwt-admin-panel/commit/93261ba22bed7e86f82a7214831d577bf44658c8))
+
+## [1.3.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.2.0...v1.3.0) (2020-12-02)
+
+
+### Features
+
+* added getOrganization API call to the dropdown view ([e61fdc5](https://github.com/michaelpeterswa/guwt-admin-panel/commit/e61fdc5165bbec207fe22ea292f6d0b13f90d3f4))
+* added the dropdown to choose an organization ([74aae6f](https://github.com/michaelpeterswa/guwt-admin-panel/commit/74aae6faffbd3f49c505540117f23eb3f3a54840))
+* merging forks ([d697175](https://github.com/michaelpeterswa/guwt-admin-panel/commit/d6971755107271b3ea11a1fd901d48ce1695ecb4))
+
+
+### Bug Fixes
+
+* bump jest from 26.6.3 to 26.6.0 ([c7459c3](https://github.com/michaelpeterswa/guwt-admin-panel/commit/c7459c31d9505854317a6eb844725da4ab6b575e))
+* fixed merge conflicts ([867e1e6](https://github.com/michaelpeterswa/guwt-admin-panel/commit/867e1e6d7bf73584060b465b1fd8a1e14df90048))
+* temporarily removed jest from dev-dep ([5b1ece4](https://github.com/michaelpeterswa/guwt-admin-panel/commit/5b1ece4cc5893b5b339dbf07544f00e9149434c6))
+
 ## [1.2.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.1.1...v1.2.0) (2020-11-16)
 
 

@@ -1,36 +1,42 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
-import React, { Fragment, useState } from "react";
-import { render } from "react-dom";
-
+import React, { useState } from "react";
 import LogoutButton from "../components/logout-button";
 import Home from "./homeView";
 import MemberView from "./memberView";
 import MediaView from "./mediaView";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import DeleteOrganization from "../components/deleteOrganization";
 
 //component for the main organization view
 //parameters:
-//  setOrgChosen: function that takes a bool and determines whether there has been an organization chosen or not
-const OrganizationMainPage = ({ setOrgChosen }) => {
+//  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
+//  organizationName: name of the organization chose
+const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
 
   return (
-    <div>
-      <h1>Organization name: , username:</h1>
+    <Container class="p-3">
+      <h1>Organization name: {organizationData.name} , username:</h1>
       <LogoutButton />
+      
+      <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
+
+
       <p>this will be the top bar for all organization views and
       will contain a logout button, the organization name
                  and a sidebar menu to navigate to the different views, and a go back button</p>
       <p>right now there is a dropdown menu instead of the sidebar</p>
-      <button onClick={() => goBackToChooseOrganization()}>go back</button>
+      <Button onClick={() => goBackToChooseOrganization()}>go back</Button>
       <ViewDropdown setOrganizationViewChosen={setOrganizationViewChosen} />
 
 
-      {organizationViewChosen == "home view" && <Home />}
-      {organizationViewChosen == "member view" && <MemberView />}
-      {organizationViewChosen == "media view" && <MediaView />}
-    </div>
+      {organizationViewChosen === "home view" && <Home />}
+      {organizationViewChosen === "member view" && <MemberView />}
+      {organizationViewChosen === "media view" && <MediaView />}
+    </Container>
 
   );
 
@@ -66,19 +72,20 @@ const ViewDropdown = ({ setOrganizationViewChosen }) => {
   });
 
   return (
-    <div className="dropdown" ref={drop} >
-      <button onClick={() => setOpen(open => !open)}>select view</button>
-      {
-        open &&
-        <ul>
-          {data.map((item, i) => (
-            <li key={i} onClick={() => handleSelection(item)}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      }
-    </div>
+    
+      <div className="dropdown" ref={drop} >
+        <Button onClick={() => setOpen(open => !open)}>select view</Button>
+        {
+          open &&
+          <ul>
+            {data.map((item, i) => (
+              <li key={i} onClick={() => handleSelection(item)}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        }
+      </div>
   );
 };
 

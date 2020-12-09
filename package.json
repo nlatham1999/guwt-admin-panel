@@ -1,10 +1,14 @@
 {
   "name": "guwt-admin-panel",
-  "version": "1.2.0",
+  "version": "1.4.1",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "popper": "^1.0.1",
     "react": "^16.14.0",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
@@ -59,7 +63,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
+    "jest": "26.6.0",
     "react-test-renderer": "^17.0.1",
     "standard-version": "^9.0.0"
   }

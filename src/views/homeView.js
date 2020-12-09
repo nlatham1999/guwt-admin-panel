@@ -1,16 +1,14 @@
-//homeView.js
+//component for the home view
+//accessed thorugh the OrganizationMainPage component
 
 //this is the main page for the admin panel. 
 //It will hold a list of tours where the user can edit them or add a new tour
 //there will also be a side bar to go to the other tours
 //there should also be a logout button at the topa
 
-import React, { Fragmen, useState } from "react";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 
-import { useAuth0 } from "@auth0/auth0-react";
-
-//import the css module
-import styles from "../css_modules/generalStyles.module.css";
 
 import EditTour from "./editTourView";
 
@@ -27,7 +25,7 @@ const Home = () => {
   }
 
   return (
-    <div className={styles.generalStyle}>
+    <div>
       <h1>This is the home view</h1>
       <p>
         stuff to do:
@@ -38,7 +36,7 @@ const Home = () => {
           <li>add new tours</li>
         </ul>
       </p>
-      <button onClick={() => editTourButton()}>edit/create new tour</button>
+      <Button onClick={() => editTourButton()}>edit/create new tour</Button>
     </div>
   );
 
