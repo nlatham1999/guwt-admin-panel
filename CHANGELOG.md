@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.4.1...v1.5.0) (2020-12-09)
+
+
+### Features
+
+* added a confirmation dialog when deleting an organization ([b3c2704](https://github.com/michaelpeterswa/guwt-admin-panel/commit/b3c27042224fe1b5a9e9c8246b29a9369488a377))
+* added a navigation bar to the organization home screen ([538d4f0](https://github.com/michaelpeterswa/guwt-admin-panel/commit/538d4f0792c87403b3e686bb8923777af4082985))
+* added NewOrganization.js which adds an organization ([f4ce202](https://github.com/michaelpeterswa/guwt-admin-panel/commit/f4ce2023bae67021afe470164e67ccee8e0f9616))
+* added the username when creating a new organization ([65557f8](https://github.com/michaelpeterswa/guwt-admin-panel/commit/65557f83280aead8bd32130ebd96235cf2d70e0d))
+* changed a bunch of things referencing nick's work (which got pulled into testing branch) ([7320ca6](https://github.com/michaelpeterswa/guwt-admin-panel/commit/7320ca6559a9d04b643b22c95296269faf29d80c))
+* changed adding a new organization to be a bootrap modal ([70dda08](https://github.com/michaelpeterswa/guwt-admin-panel/commit/70dda08beb49051563ae305090d60ae9b10d1f28))
+* changed new org modal to have success alert and utilize form controls ([0e320f1](https://github.com/michaelpeterswa/guwt-admin-panel/commit/0e320f14c0f9cba46a48d800d92f4f3ad13f848d))
+* cleaned up for presentation ([32c2572](https://github.com/michaelpeterswa/guwt-admin-panel/commit/32c25727cc5f48b2063fb76ca0318310e7990503))
+* merging from master ([81c4991](https://github.com/michaelpeterswa/guwt-admin-panel/commit/81c49917f106c6596823bbd4c372e0965e9cb881))
+* started adding a delete organization component ([4740f1b](https://github.com/michaelpeterswa/guwt-admin-panel/commit/4740f1be72c6f23ea19755a64d6ef98f0a977958))
+* users cannot access organizations they are not part of ([d6d7c92](https://github.com/michaelpeterswa/guwt-admin-panel/commit/d6d7c922ac1c56b8b474897627234d606f759e5c))
+* when going to the home view of an organization, the organization data gets passed in instead of the organization name ([105f521](https://github.com/michaelpeterswa/guwt-admin-panel/commit/105f5213a93f48df3cbd5906c53c1ed4561683b5))
+
+
+### Bug Fixes
+
+* fixed the the issue where the was continuous requests made to the server ([856ebcc](https://github.com/michaelpeterswa/guwt-admin-panel/commit/856ebcc482a47881a7203a9f7c375812d6f72f2e))
+* fixing the link for posting data to the database ([632da38](https://github.com/michaelpeterswa/guwt-admin-panel/commit/632da387dbd9d7002d534b61790d7c743752ad11))
+* no-unused-vars hotfix ([134538c](https://github.com/michaelpeterswa/guwt-admin-panel/commit/134538c4b3100b9d96bf33bdecae8cb762bcd243))
+* the NewOrganization component now works ([4e0f24a](https://github.com/michaelpeterswa/guwt-admin-panel/commit/4e0f24a75c9370dac85f75f3a326546e618a405e))
+
 ### [1.4.1](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.4.0...v1.4.1) (2020-12-08)
 
 ## [1.4.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.3.0...v1.4.0) (2020-12-08)
