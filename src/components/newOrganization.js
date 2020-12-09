@@ -14,13 +14,13 @@ const NewOrganization = ({setAddNewOrganization}) => {
 
     return (
         <div>
-            <label for='org name'>enter the organization name</label>
+            <label htmlFor='org name'>enter the organization name</label>
             <input 
                 name = 'org name'
                 onChange = {setNameFromInput}
             />
             <br></br>
-            <label for='org department'>enter the organization's category</label>
+            <label htmlFor='org department'>enter the organization's category</label>
             <input 
                 name = 'org department'
                 onChange = {setDepartmentFromInput}
@@ -39,13 +39,13 @@ const NewOrganization = ({setAddNewOrganization}) => {
         };
         axios
             .post(
-                'https://backend.gonzagatours.app/organization', 
+                'https://backend.gonzagatours.app/api/organization', 
+                data,
                 {
                     'headers': {
                         'Authentication': process.env.REACT_APP_API_KEY
                     }
-                },
-                data)
+                })
             .then(
                 setAddNewOrganization(false)
             )
