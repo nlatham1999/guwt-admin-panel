@@ -11,6 +11,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
 
     const [orgName, setOrgName] = useState("");
     const [orgDepartment, setOrgDepartement] = useState("");
+    const { user } = useAuth0();
 
     return (
         <div>
@@ -35,7 +36,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
         const data = {
             name: orgName,
             department: orgDepartment,
-            admin: "nick"
+            admin: user.name
         };
         axios
             .post(
