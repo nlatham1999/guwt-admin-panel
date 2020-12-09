@@ -24,7 +24,7 @@ const SelectOrganization = () => {
         );
     }
     return (
-        <Container class="p-3">
+        <Container className="p-3">
             <h1>Select Organization</h1>
             <h2>Need to do:</h2>
             <ul>
@@ -74,7 +74,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     }
     
     function isUserTheAdmin(selection) {
-        if(user.name == selection.admin){
+        if(user.name === selection.admin){
           return true
         }
         return false

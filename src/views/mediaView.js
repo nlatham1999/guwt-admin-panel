@@ -2,7 +2,7 @@
 //accessed through the OrganizationMainPage component
 import React, { useState } from "react";
 import pic from '../images/college-hall.jpg'
-
+import Button from "react-bootstrap/Button";
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
@@ -21,7 +21,7 @@ const MediaView = () => {
                     <li>allow selection of media files</li>
                     <li>allow uploading of media</li>
                 </ul>
-            <button onClick={() => displayMedia()}>Display Available Media</button>
+            <Button onClick={() => displayMedia()}>Display Available Media</Button>
             {
                 isClicked === true &&
                 <div>
@@ -39,7 +39,7 @@ const MediaView = () => {
 
 
     function displayMedia(){
-        setisClicked(true);
+        setisClicked(!isClicked);
     }
 
 }

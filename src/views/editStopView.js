@@ -11,13 +11,11 @@ const EditStop = ({setEditStopMode}) => {
     return (
         <div>
             <h1>This is the edit stop view</h1>
-            <p>
             stuff to do:
             <ul>
                 <li>edit stop details</li>
                 <li>get google maps plugin</li>
             </ul>
-            </p>
             <Button onClick={() => goBackToTourEdit()}>go back</Button>
         </div>
     );
