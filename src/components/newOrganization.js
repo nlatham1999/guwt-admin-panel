@@ -37,12 +37,18 @@ const NewOrganization = ({setAddNewOrganization}) => {
             department: orgDepartment,
             admin: "nick"
         };
-        setAddNewOrganization(false);
-        axios.post('https://api.gonzagatours.app/organization', {
-            'headers': {
-            'Authentication': process.env.REACT_APP_API_KEY
-            }},
-            data)
+        axios
+            .post(
+                'https://backend.gonzagatours.app/organization', 
+                {
+                    'headers': {
+                        'Authentication': process.env.REACT_APP_API_KEY
+                    }
+                },
+                data)
+            .then(
+                setAddNewOrganization(false)
+            )
     }
 
     function cancelAdding(){
