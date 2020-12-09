@@ -8,11 +8,10 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/newOrganization";
+import { Dropdown, DropdownButton } from "react-bootstrap"; 
 
 const SelectOrganization = () => {
     
-    // const { user } = useAuth0();
-    // const username = user.name;
     const [organizationData, setOrganizationData] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
     const [addNewOrganization, setAddNewOrganization] = useState(false);
@@ -47,7 +46,7 @@ const SelectOrganization = () => {
             {/* sets up adding a new organization */}
             <br></br>
             <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-            {addNewOrganization == true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
+            {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
 
             
         </Container>
@@ -106,17 +105,13 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
   
     return (
       <div className="dropdown" ref={drop} >
-        <Button onClick={() => setOpen(open => !open)}>Select an Organization</Button>
-        {
-          open &&
-          <ul>
+        <DropdownButton title="Select an Organization">
             {responseData.map((item, i) => (
-              <li key={i} onClick={() => handleSelection(item)}>
+              <Dropdown.Item key={i} onClick={() => handleSelection(item)}>
                 {item.name}
-              </li>
+              </Dropdown.Item>
             ))}
-          </ul>
-        }
+        </DropdownButton>
       </div>
     );
   };

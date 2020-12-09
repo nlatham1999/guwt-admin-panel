@@ -13,13 +13,14 @@ import DeleteOrganization from "../components/deleteOrganization";
 //parameters:
 //  setOrgChosen: function that takes a bool that determines whether there has been an organization chosen or not
 //  organizationName: name of the organization chose
-const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
-
+const OrganizationMainPage = ({ user, setOrgChosen, organizationData }) => {
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
+  const orgName = organizationData.name;
 
   return (
-    <Container class="p-3">
-      <h1>Organization name: {organizationData.name} , username:</h1>
+    <Container className="p-3">
+      {/* add username somehow while passing tests -- i'm too tired (michael) */}
+      <h1>Organization name: {orgName} , username:</h1>
       <LogoutButton />
       
       <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>

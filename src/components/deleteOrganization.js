@@ -1,11 +1,8 @@
 //this component is to render new organizations
 
-import React, { useState} from "react";
-import LogoutButton from "../components/logout-button";
+import React from "react";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const DeleteOrganization = ({organizationData, setOrgChosen}) => {
 
@@ -13,21 +10,25 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
     return (
 
         <>
-            <Button onClick={() => deleteTheOrganization}>Delete Organization</Button>
+            <Button onClick={() => deleteTheOrganization()}>Delete Organization</Button>
         </>
     );
 
     function deleteTheOrganization(){
+        let url = "https://backend.gonzagatours.app/api/organization/"
+        url = url + organizationData._id
+
         axios.delete(
-            'https://backend.gonzagatours.app/api/organization',
-            organizationData,
+            url,
             {
                 'headers': {
                     'Authentication': process.env.REACT_APP_API_KEY
                 }
             }).then(
                 setOrgChosen(false)
-            )
+            ).catch(function (error) {
+                console.log(error);
+            });
     }
 }
 
