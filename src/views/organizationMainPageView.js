@@ -7,6 +7,8 @@ import MemberView from "./memberView";
 import MediaView from "./mediaView";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import DeleteOrganization from "../components/deleteOrganization";
+
 
 //component for the main organization view
 //parameters:
@@ -15,11 +17,18 @@ import Button from "react-bootstrap/Button";
 const OrganizationMainPage = ({ setOrgChosen, organizationName }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
+  const orgName = organizationData.name;
 
   return (
-    <Container class="p-3">
-      <h1>Organization name: {organizationName} , username:</h1>
+
+    <Container className="p-3">
+      {/* add username somehow while passing tests -- i'm too tired (michael) */}
+      <h1>Organization name: {orgName} , username:</h1>
       <LogoutButton />
+      
+      <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
+
+
       <p>this will be the top bar for all organization views and
       will contain a logout button, the organization name
                  and a sidebar menu to navigate to the different views, and a go back button</p>
