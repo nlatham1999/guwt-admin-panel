@@ -9,6 +9,9 @@ import Container from 'react-bootstrap/Container';
 //import the login and logout buttons
 import LoginButton from "../components/login-button.js"
 
+//import the admin tutorial link button
+import AdminTutorialButton from "../components/AdminTutorial-button.js"
+
 // //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
 
@@ -22,7 +25,11 @@ const LoginView = () => {
       <br></br>
       <p>Please press the login button below</p>
       <div>
-          <LoginButton />
+        <LoginButton />
+      </div>
+      <br></br>
+      <div>
+        <AdminTutorialButton />
       </div>
       </Jumbotron>
     </Container>
