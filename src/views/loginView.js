@@ -25,10 +25,11 @@ const LoginView = () => {
       <br></br>
       <p>Please press the login button below</p>
       <div>
-          <LoginButton />
+        <LoginButton />
       </div>
+      <br></br>
       <div>
-		      <AdminTutorialButton />
+        <AdminTutorialButton />
       </div>
       </Jumbotron>
     </Container>
