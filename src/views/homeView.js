@@ -8,7 +8,8 @@
 
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-
+import TourCell from "../components/tour-cell";
+import Card from "react-bootstrap/Card";
 
 import EditTour from "./editTourView";
 
@@ -17,6 +18,7 @@ const Home = () => {
   // const { user } = useAuth0();
 
   const [tourEditMode, setTourEditMode] = useState(false);
+  const [tours, setTours] = useState(["tour1", "tour2", "tour3"])
 
   if(tourEditMode){
     return (
@@ -26,14 +28,13 @@ const Home = () => {
 
   return (
     <div>
-      <h1>This is the home view</h1>
-        stuff to do:
-        <ul>
-          <li>view tours</li>
-          <li>enable selecting tours to see data</li>
-          <li>edit tours</li>
-          <li>add new tours</li>
-        </ul>
+      <Card style={{ width: '48rem' }}>
+        <Card.Body>
+          {tours.map((item, i) => (
+                <TourCell />
+          ))}
+        </Card.Body>
+      </Card>
       <Button onClick={() => editTourButton()}>edit/create new tour</Button>
     </div>
   );
