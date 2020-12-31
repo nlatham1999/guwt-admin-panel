@@ -4,22 +4,25 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 
+import EditTour from "../views/editTourView";
 
-const TourCell = () => {
+
+const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours, setTours}) => {
+
 
     return (
         <Form>
             <Form.Group as={Row}>
                 <Form.Label column sm={3}>
-                    Tour Name
+                    name: {tours[tourIndex].name}
                 </Form.Label>
                 <Form.Label column sm={3}>
-                    Number of stops
+                    no. of stops: {tours[tourIndex].stops.length}
                 </Form.Label>
                 <Button column sm={3}>
                     Tour Info
                 </Button>
-                <Button column sm={3}>
+                <Button column sm={3} onClick={() => editTourButton()}>
                     Edit Tour
                 </Button>
                 <Button column sm={3}>
@@ -28,6 +31,11 @@ const TourCell = () => {
             </Form.Group>
         </Form>
     );
+
+    function editTourButton(){
+        setTourIndex(tourIndex);
+        setTourEditMode(true);
+    }
 
 }
 

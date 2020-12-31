@@ -17,12 +17,52 @@ const Home = () => {
   
   // const { user } = useAuth0();
 
+  //this is a sample of a list of tour objects
+  const sampleTours = [
+    {
+      name: "tour 1",
+      stops: [
+        {
+          name: "stop 1",
+          latitude: 1000,
+          longitude: 1000,
+          description: "This is tour 1"
+        },
+        {
+          name: "stop 2",
+          latitude: 1000,
+          longitude: 1000,
+          description: "This is tour 1"
+        },
+        {
+          name: "stop 3",
+          latitude: 1000,
+          longitude: 1000,
+          description: "This is tour 1"
+        },
+      ]
+    },
+    {
+      name: "tour 2",
+      stops: [
+        {
+          name: "stop 1",
+          latitude: 1000,
+          longitude: 1000,
+          description: "This is tour 2"
+        }
+      ]
+    }
+  ]  
+
   const [tourEditMode, setTourEditMode] = useState(false);
-  const [tours, setTours] = useState(["tour1", "tour2", "tour3"])
+  const [tours, setTours] = useState(sampleTours);
+  const [tourIndex, setTourIndex] = useState(0);
+  
 
   if(tourEditMode){
     return (
-      <EditTour setTourEditMode = {setTourEditMode}/>
+      <EditTour setTourEditMode={setTourEditMode} tours={tours} setTours={setTours} tourIndex={tourIndex}/>
     );
   }
 
@@ -30,17 +70,24 @@ const Home = () => {
     <div>
       <Card style={{ width: '48rem' }}>
         <Card.Body>
-          {tours.map((item, i) => (
-                <TourCell />
+          {tours.map((tour, i) => (
+                <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tours} setTours={setTours}/>
           ))}
         </Card.Body>
       </Card>
-      <Button onClick={() => editTourButton()}>edit/create new tour</Button>
+      <Button onClick={() => addTourButton()}>create new tour</Button>
     </div>
   );
 
-  function editTourButton(){
-    setTourEditMode(true);
+  function addTourButton(){
+    const tour = {
+      name: "New Tour",
+      stops: []
+    }
+    tours.push(tour);
+    setTours(tours);
+    setTourIndex(tours.length - 1); //this line doesn't do anything, but the page does not rerender without it for some reason...
+    //todo: update the tours in the database
   }
 }
 
