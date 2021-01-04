@@ -9,14 +9,23 @@ import React, {useState} from "react";
 import EditStop from "./editStopView";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 import { Col, Row } from "react-bootstrap";
+
+import StopCell from "../components/stop-cell";
 
 //edit tour component
 //parameters:
 //  setTourEditMode: takes in a bool and determines whether to stay in this mode
+//  tours: the list of tours in the organization
+//  setTours: updates the tours
+//  tourIndex: the index of the tour that we are currently editing
 const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
 
     const [editStopMode, setEditStopMode] = useState(false);
+    const [stops, setStops] = useState(tours[tourIndex].stops);
+    const [stopIndex, setStopIndex] = useState(0);
+
 
     if(editStopMode){
         return (
@@ -26,6 +35,7 @@ const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
 
     return (
         <div>
+            {/* display the form to edit the tour name */}
             <Form>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={4}>
@@ -35,10 +45,18 @@ const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
                     <Form.Control placeholder={tours[tourIndex].name} onChange={(event) => setNameFromInput(event)}/>
                     </Col>
                 </Form.Group>
-
             </Form>
+            {/* display the list of stops */}
+            <Card style={{ width: '48rem' }}>
+                <Card.Body>
+                {tours[tourIndex].stops.map((stop, i) => (
+                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={stops} setStops={setStops}/>
+                ))}
+                </Card.Body>
+            </Card>
+            {/* go back home button */}
             <Button onClick={() => goBackToHome()}>go back</Button>
-            <Button onClick={() => goToEditStop()}>edit stop</Button>
+            <Button onClick={() => goToAddStop()}>add stop</Button>
         </div>
     );
 
@@ -46,8 +64,15 @@ const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
         setTourEditMode(false);
     }
 
-    function goToEditStop(){
-        setEditStopMode(true);
+    function goToAddStop(){
+        const stop = {
+            name: "new stop",
+            latitude: 420,
+            longitude: 69,
+            description: "new stop description"
+        }
+        stops.push(stop);
+        setStopIndex(stops.length - 1); //this line doesn't do anything, but the page does not rerender without it for some reason...
     }
 
     function setNameFromInput(event){
