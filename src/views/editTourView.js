@@ -25,11 +25,16 @@ const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
     const [editStopMode, setEditStopMode] = useState(false);
     const [stops, setStops] = useState(tours[tourIndex].stops);
     const [stopIndex, setStopIndex] = useState(0);
+    const [deleteStop, setDeleteStop] = useState(false); //determines whether to delete a stop or not
 
+    if(deleteStop){
+        stops.splice(stopIndex, 1);
+        setDeleteStop(false);
+    }
 
     if(editStopMode){
         return (
-            <EditStop setEditStopMode={setEditStopMode} />
+            <EditStop setEditStopMode={setEditStopMode} stops={stops} stopIndex={stopIndex} />
         );
     }
 
@@ -50,7 +55,7 @@ const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
             <Card style={{ width: '48rem' }}>
                 <Card.Body>
                 {tours[tourIndex].stops.map((stop, i) => (
-                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={stops} setStops={setStops}/>
+                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={stops} setStops={setStops} setDeleteStop={setDeleteStop}/>
                 ))}
                 </Card.Body>
             </Card>

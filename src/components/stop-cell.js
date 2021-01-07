@@ -17,7 +17,7 @@ import EditTour from "../views/editTourView";
 //  setStopIndex: sets the tour index: used for referenceing which tour was selected in the tour edit mode
 //  stops: the list of tours
 //  setStops: sets the tours
-const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops}) => {
+const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, setDeleteStop}) => {
 
     return (
         //display the stop names, and delete, info, and edit buttons
@@ -32,12 +32,16 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops}) =
                 <Button column sm={3} onClick={() => editStopButton()}>
                     Edit Stop
                 </Button>
-                <Button column sm={3}>
+                <Button column sm={3} onClick={() => deleteStopButton()}>
                     Delete Stop
                 </Button>
             </Form.Group>
         </Form>
     );
+
+    function deleteStopButton(){
+        setDeleteStop(true);
+    }
 
     //handles the edit tour button
     function editStopButton(){
