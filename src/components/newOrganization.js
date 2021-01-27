@@ -80,7 +80,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
         const data = {
             name: orgName,
             department: orgDepartment,
-            admin: user.name
+            admin: [user.name]
         };
         axios
             .post(

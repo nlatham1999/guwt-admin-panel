@@ -25,16 +25,6 @@ const SelectOrganization = () => {
     }
     return (
         <Container className="p-3">
-            <h1>Select Organization</h1>
-            <h2>Need to do:</h2>
-            <ul>
-                <li>connect to the aws and get a list of organizations</li>
-                <li>create a dropdown or a list with tours</li>
-                <li>if a organization is selected, check to make sure that the user has access</li>
-                <li> if not then as if they want to request access</li>
-                <li>if so then go to the organziation main page</li>
-                <li>add a create organization button</li>
-            </ul>
 
             {/* display the dropdown for an organization */}
             <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
@@ -73,22 +63,34 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
       }
     }
     
+    //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
-        if(user.name === selection.admin){
+        if(selection.admin.includes(user.name)){
           return true
         }
         return false
     }
 
-
+    //handles the selection of an organization 
     function handleSelection(selection) {
+      setOrganizationData(selection);
       if(isUserTheAdmin(selection)){
-        setOrganizationData(selection);
         setOrganizationChosen(true)
         setOpen(false);
       }else{
         setIsAdminOfOrganization(false)
       }
+    }
+
+    //requests access to the organization stored in organizationData
+    function handleRequestAccess(){
+      // setOrganizationChosen(true)
+      // setOpen(false)
+
+      //todo: within the organization data, add the username to the prospective members list 
+      //    then update the organization
+
+      setIsAdminOfOrganization(true)
     }
   
     React.useEffect(() => {
@@ -126,11 +128,13 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
               </Dropdown.Item>
             ))}
         </DropdownButton>
+
         <Modal show={!isAdminOfOrganization} onHide={() => setIsAdminOfOrganization(true)}>
               <Modal.Body>
                   <p>You are not part of this organization</p>
               </Modal.Body>
               <Modal.Footer>
+                <Button onClick={() => handleRequestAccess()}>Request Access</Button>
                 <Button onClick={() => setIsAdminOfOrganization(true)}>OK</Button>
               </Modal.Footer>
         </Modal>

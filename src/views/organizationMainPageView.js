@@ -30,7 +30,7 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
       <OrganizationNavigationBar organizationData={organizationData} setOrganizationViewChosen={setOrganizationViewChosen} setOrgChosen={setOrgChosen}/>
       
       {organizationViewChosen === "home view" && <Home />}
-      {organizationViewChosen === "member view" && <MemberView />}
+      {organizationViewChosen === "member view" && <MemberView organizationData={organizationData}/>}
       {organizationViewChosen === "media view" && <MediaView />}
     </Container>
 
