@@ -3,7 +3,7 @@
 
 //this is the main page for the admin panel. 
 //It will hold a list of tours where the user can edit them or add a new tour
-//there will also be a side bar to go to the other tours
+//there will also be a side bar to go to the other views
 //there should also be a logout button at the topa
 
 import React, { useState } from "react";

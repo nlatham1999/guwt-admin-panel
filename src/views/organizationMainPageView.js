@@ -11,7 +11,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
-import DeleteOrganization from "../components/deleteOrganization";
+import DeleteOrganization from "../components/delete-organization";
 import LogoutButton from "../components/logout-button";
 
 

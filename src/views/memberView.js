@@ -1,33 +1,41 @@
 //Component for the member view 
 //accessed trhough the OrganizationMainPage component
 
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import ProspectiveMemberCell from "../components/prospective-moderator-cell";
+import ModeratorCell from "../components/moderator-cell"
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
 
 const MemberView = ({organizationData}) => {
 
+    const [refresh, setRefresh] = useState(false); //call this when you want to rerender. kinda hacky but it works
+
     return (
         <>
+        
         <Card style={{ width: '48rem' }}>
-        <Card.Header>Current Admins</Card.Header>
-        <Card.Body>
-            {organizationData.members.map((member, i) => (
-                <h>{member}</h>
-            ))}
-        </Card.Body>
+            <Card.Header>Admin: {" " + organizationData.admin}</Card.Header>
         </Card>
         <Card style={{ width: '48rem' }}>
-        <Card.Header>Prospective Admins</Card.Header>
-        <Card.Body>
-            {organizationData.prospectiveMembers.map((member, i) => (
-                <h>{member}</h>
-            ))}
-        </Card.Body>
+            <Card.Header>Current Moderators</Card.Header>
+            <Card.Body>
+                {organizationData.moderators.map((member, i) => (
+                    <ModeratorCell moderatorIndex={i} organizationData={organizationData} setRefresh={setRefresh}/>
+                ))}
+            </Card.Body>
+        </Card>
+        <Card style={{ width: '48rem' }}>
+            <Card.Header>Prospective Moderators</Card.Header>
+            <Card.Body>
+                {organizationData.prospectives.map((member, i) => (
+                    <ProspectiveMemberCell prospectiveIndex={i} organizationData={organizationData} setRefresh={setRefresh}/>
+                ))}
+            </Card.Body>
         </Card>
     </>
     );

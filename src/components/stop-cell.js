@@ -8,8 +8,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 
-import EditTour from "../views/editTourView";
-
 //tour cell component
 //parameters:
 //  setStopEditMode: sets whehteher we are editing a stop or not

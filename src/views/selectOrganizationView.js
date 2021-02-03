@@ -7,7 +7,7 @@ import LogoutButton from "../components/logout-button";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import NewOrganization from "../components/newOrganization";
+import NewOrganization from "../components/new-organization";
 import { Dropdown, DropdownButton, Modal } from "react-bootstrap"; 
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -54,6 +54,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     const [open, setOpen] = React.useState(false);
     const [responseData, setResponseData] = React.useState([""]);
     const [isAdminOfOrganization, setIsAdminOfOrganization] = React.useState(true);
+    const [selectedOrganization, setSelectedOrganization] = React.useState(0);
     const drop = React.useRef(null);
     const {user} = useAuth0();
 
@@ -65,7 +66,13 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
-        if(selection.admin.includes(user.name)){
+        if(selection.admin == user.name){
+          return true
+        }
+        if(!selection.moderators){
+          return false
+        }
+        if(selection.moderators.includes(user.name)){
           return true
         }
         return false
@@ -74,6 +81,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     //handles the selection of an organization 
     function handleSelection(selection) {
       setOrganizationData(selection);
+      setSelectedOrganization(selection);
       if(isUserTheAdmin(selection)){
         setOrganizationChosen(true)
         setOpen(false);
@@ -86,6 +94,34 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     function handleRequestAccess(){
       // setOrganizationChosen(true)
       // setOpen(false)
+      
+      if(!selectedOrganization.prospectives){
+        setSelectedOrganization({...selectedOrganization, prospectives: [user.name]});
+      }else{
+        selectedOrganization.prospectives.push(user.name)
+      }
+      axios
+        .put(
+          'https://backend.gonzagatours.app/api/organization/' + selectedOrganization._id, 
+          selectedOrganization,
+          {
+              'headers': {
+                  'Authentication': process.env.REACT_APP_API_KEY
+              }
+          })
+        .then((response) => {
+          // if (response.status === 201){
+          //     setSuccess(true)
+          //     setShow(true)
+          // }
+          // else{
+          //     setSuccess(false)
+          //     setShow(true)
+          // }
+          // setAddNewOrganization(false)
+        }
+          
+        )
 
       //todo: within the organization data, add the username to the prospective members list 
       //    then update the organization

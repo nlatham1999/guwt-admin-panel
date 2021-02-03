@@ -1,23 +1,28 @@
 //this component is to render new organizations
+//includes the form for filling out the new organization button and an alert for successful completion
 
 import React, { useState} from "react";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Col, Row } from "react-bootstrap";
 
+//New Organization Component
+//  setAddNewOrganization: setter for a bool. Lets the parent component know whether to render the component or not
 const NewOrganization = ({setAddNewOrganization}) => {
 
-    const [orgName, setOrgName] = useState("");
-    const [success, setSuccess] = useState("");
-    const [show, setShow] = useState(true);
-    const [showModal, setShowModal] = useState(true);
-    const [orgDepartment, setOrgDepartement] = useState("");
-    const { user } = useAuth0();
+    const [orgName, setOrgName] = useState(""); //holds the new organization name
+    const [success, setSuccess] = useState(""); //used for showing the alert  
+    const [show, setShow] = useState(true);     //used to determine whether to show the alert
+    const [showModal, setShowModal] = useState(true);   //used to determine whether to show the modal
+    const [orgDepartment, setOrgDepartement] = useState("");    //holds the organization name
+    const { user } = useAuth0();    //holds user information
 
+    //displays the alert upon sucessful completion of an organization
     if (show && success) {
         return (
             <Modal show={true} onHide={() => cancelAdding()} centered>
@@ -41,6 +46,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
           );
     }
 
+    //displays the form for creating a new organization
     return (
         <Modal show={showModal} onHide={() => cancelAdding()} centered>
             <Modal.Header closeButton>
@@ -76,11 +82,14 @@ const NewOrganization = ({setAddNewOrganization}) => {
         </Modal>
     );
 
+    //creates a new organization from the form and uploads it to the server
     function addOrganization(){
         const data = {
             name: orgName,
             department: orgDepartment,
-            admin: [user.name]
+            admin: user.name,
+            moderators: [],
+            prospectives: []
         };
         axios
             .post(
@@ -100,21 +109,22 @@ const NewOrganization = ({setAddNewOrganization}) => {
                     setSuccess(false)
                     setShow(true)
                 }
-                // setAddNewOrganization(false)
             }
-                
-            )
+        )
     }
 
+    //action for the cancel button
     function cancelAdding(){
         setAddNewOrganization(false);
         setShowModal(false);
     }
 
+    //sets the name from the form
     function setNameFromInput(event){
         setOrgName(event.target.value)
     }
 
+    //sets the department from the form
     function setDepartmentFromInput(event){
         setOrgDepartement(event.target.value)
     }
