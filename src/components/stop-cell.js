@@ -22,7 +22,9 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
         <Form>
             <Form.Group as={Row}>
                 <Form.Label column sm={3}>
-                    name: {stops[stopIndex].name}
+                    {stops[stopIndex] &&
+                    <>name: {stops[stopIndex].stop_name}</>
+                    }       
                 </Form.Label>
                 <Button column sm={3}>
                     Stop Info

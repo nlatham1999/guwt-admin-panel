@@ -1,6 +1,7 @@
 //Component for the edit tour view
 
 import React, {useState} from "react";
+import axios from "axios";
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
@@ -26,15 +27,23 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     const [stops, setStops] = useState(tours[tourIndex].stops);
     const [stopIndex, setStopIndex] = useState(0);
     const [deleteStop, setDeleteStop] = useState(false); //determines whether to delete a stop or not
+    const [triggerUpdateTour, setTriggerUpdateTour] = useState(false);
 
     if(deleteStop){
-        stops.splice(stopIndex, 1);
+        tours[tourIndex].stops.splice(stopIndex, 1);
+        updateTour()
         setDeleteStop(false);
+    }
+
+    if(triggerUpdateTour){
+        tours[tourIndex].stops[stopIndex] = stops[stopIndex];
+        updateTour()
+        setTriggerUpdateTour(false);
     }
 
     if(editStopMode){
         return (
-            <EditStop setEditStopMode={setEditStopMode} stops={stops} stopIndex={stopIndex} />
+            <EditStop setEditStopMode={setEditStopMode} stops={stops} stopIndex={stopIndex} setTriggerUpdateTour={setTriggerUpdateTour}/>
         );
     }
 
@@ -71,19 +80,40 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
 
     function goToAddStop(){
         const stop = {
-            name: "new stop",
-            latitude: 420,
-            longitude: 69,
-            description: "new stop description"
+            // stop_id: "0", 
+            stop_name: "New Stop",
+            stop_desc: "description",
+            lat: "0",
+            long: "0",
+            media: []
         }
-        stops.push(stop);
-        setStopIndex(stops.length - 1); //this line doesn't do anything, but the page does not rerender without it for some reason...
+        tours[tourIndex].stops.push(stop);
+        updateTour();
+        // stops.push(stop);
+        // setStopIndex(stops.length - 1); //this line doesn't do anything, but the page does not rerender without it for some reason...
     }
 
     function setNameFromInput(event){
         tours[tourIndex].name = event.target.value;
+        updateTour();
     }
 
+    function updateTour(){
+        axios
+        .put(
+          'https://backend.gonzagatours.app/tour/t/' + tours[tourIndex]._id, 
+          tours[tourIndex],
+          {
+              'headers': {
+                  'Authentication': process.env.REACT_APP_API_KEY
+              }
+        })
+        .then((response) => {
+        }
+          
+        )
+        // setRefresh(true);
+    }
 }
 
 export default EditTour;

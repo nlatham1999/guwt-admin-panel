@@ -9,7 +9,7 @@ import { Col, Row } from "react-bootstrap";
 //import the css module
 
 
-const EditStop = ({setEditStopMode, stops, stopIndex}) => {
+const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour}) => {
 
     return (
         <div>
@@ -20,7 +20,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex}) => {
                     Stop Name
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control placeholder={stops[stopIndex].name} onChange={(event) => setNameFromInput(event)}/>
+                    <Form.Control placeholder={stops[stopIndex].stop_name} onChange={(event) => setNameFromInput(event)}/>
                     </Col>
                 </Form.Group>
 
@@ -29,7 +29,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex}) => {
                     Stop Description
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control placeholder={stops[stopIndex].description} onChange={(event) => setDescriptionFromInput(event)}/>
+                    <Form.Control placeholder={stops[stopIndex].stop_desc} onChange={(event) => setDescriptionFromInput(event)}/>
                     </Col>
                 </Form.Group>
 
@@ -38,7 +38,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex}) => {
                     latitude
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control placeholder={stops[stopIndex].latitude} onChange={(event) => setLatitudeFromInput(event)}/>
+                    <Form.Control placeholder={stops[stopIndex].lat} onChange={(event) => setLatitudeFromInput(event)}/>
                     </Col>
                 </Form.Group>
                 
@@ -47,7 +47,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex}) => {
                     latitude
                     </Form.Label>
                     <Col sm={8}>
-                    <Form.Control placeholder={stops[stopIndex].longitude} onChange={(event) => setLongitudeFromInput(event)}/>
+                    <Form.Control placeholder={stops[stopIndex].long} onChange={(event) => setLongitudeFromInput(event)}/>
                     </Col>
                 </Form.Group>
             </Form>
@@ -61,19 +61,23 @@ const EditStop = ({setEditStopMode, stops, stopIndex}) => {
     }
 
     function setNameFromInput(event){
-        stops[stopIndex].name = event.target.value;
+        stops[stopIndex].stop_name = event.target.value;
+        setTriggerUpdateTour(true);
     }
 
     function setDescriptionFromInput(event){
-        stops[stopIndex].description = event.target.value;
+        stops[stopIndex].stop_desc = event.target.value;
+        setTriggerUpdateTour(true);
     }
 
     function setLatitudeFromInput(event){
-        stops[stopIndex].latitude = event.target.value;
+        stops[stopIndex].lat = event.target.value;
+        setTriggerUpdateTour(true);
     }
 
     function setLongitudeFromInput(event){
-        stops[stopIndex].longitude = event.target.value
+        stops[stopIndex].lon = event.target.value;
+        setTriggerUpdateTour(true);
     }
 }
 
