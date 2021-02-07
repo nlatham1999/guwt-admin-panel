@@ -17,7 +17,7 @@ import EditTour from "../views/editTourView";
 //  setTourIndex: sets the tour index: used for referenceing which tour was selected in the tour edit mode
 //  tours: the list of tours
 //  setTours: sets the tours
-const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours, setTours, setDeleteTour}) => {
+const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTour}) => {
 
     return (
         //display the tour name and #of stops, and delete, info, and edit buttons

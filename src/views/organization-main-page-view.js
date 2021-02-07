@@ -1,8 +1,9 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
 import React, { useState } from "react";
+import axios from "axios";
 
-import Home from "./homeView";
+import Home from "./home-view";
 import MemberView from "./memberView";
 import MediaView from "./mediaView";
 
@@ -22,14 +23,14 @@ import LogoutButton from "../components/logout-button";
 const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
-
+ 
   return (
 
     <Container>
       {/* add username somehow while passing tests -- i'm too tired (michael) */}
       <OrganizationNavigationBar organizationData={organizationData} setOrganizationViewChosen={setOrganizationViewChosen} setOrgChosen={setOrgChosen}/>
       
-      {organizationViewChosen === "home view" && <Home />}
+      {organizationViewChosen === "home view" && <Home organizationData={organizationData} />}
       {organizationViewChosen === "member view" && <MemberView organizationData={organizationData}/>}
       {organizationViewChosen === "media view" && <MediaView />}
     </Container>

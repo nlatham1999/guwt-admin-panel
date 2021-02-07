@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 // import "./app.css";
 import LoginView from "./views/loginView";
 // import Home from "./views/homeView";
-import SelectOrginization from "./views/selectOrganizationView";
+import SelectOrginization from "./views/select-organization-view";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

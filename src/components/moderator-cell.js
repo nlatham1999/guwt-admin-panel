@@ -16,9 +16,6 @@ const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
     const [disableRemove, setDisableRemove] = useState(true);
     const { user } = useAuth0();    //holds user information
 
-
-
-
     return (
         //display the stop names, and delete, info, and edit buttons
         <Form>

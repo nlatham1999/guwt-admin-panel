@@ -2,7 +2,7 @@
 //accessed through the main App comonent
 
 import React, { useState} from "react";
-import OrganizationMainPage from "./organizationMainPageView";
+import OrganizationMainPage from "./organization-main-page-view";
 import LogoutButton from "../components/logout-button";
 import axios from "axios";
 import Container from "react-bootstrap/Container";

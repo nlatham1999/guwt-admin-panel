@@ -20,7 +20,7 @@ import StopCell from "../components/stop-cell";
 //  tours: the list of tours in the organization
 //  setTours: updates the tours
 //  tourIndex: the index of the tour that we are currently editing
-const EditTour = ({setTourEditMode, tours, setTours, tourIndex}) => {
+const EditTour = ({setTourEditMode, tours, tourIndex}) => {
 
     const [editStopMode, setEditStopMode] = useState(false);
     const [stops, setStops] = useState(tours[tourIndex].stops);
