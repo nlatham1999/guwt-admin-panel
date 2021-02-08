@@ -46,6 +46,7 @@ const SelectOrganization = () => {
         console.log("test");
         setOrganizationChosen(true);
     }
+
 }
 
 //dropdown button to choose an organization
@@ -109,19 +110,8 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
                   'Authentication': process.env.REACT_APP_API_KEY
               }
           })
-        .then((response) => {
-          // if (response.status === 201){
-          //     setSuccess(true)
-          //     setShow(true)
-          // }
-          // else{
-          //     setSuccess(false)
-          //     setShow(true)
-          // }
-          // setAddNewOrganization(false)
-        }
           
-        )
+        
 
       //todo: within the organization data, add the username to the prospective members list 
       //    then update the organization
