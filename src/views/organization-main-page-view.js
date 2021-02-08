@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import Home from "./home-view";
 import MemberView from "./member-view";
@@ -39,6 +40,9 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 }
 
 const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen, setOrgChosen}) => {
+
+  const {user} = useAuth0();
+
   return (
     <Navbar bg="light" expand="lg" style={{marginLeft: "0"}}>
       <Navbar.Brand>
@@ -62,12 +66,19 @@ const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen,
           </NavDropdown>
         </Nav>
         <Form inline>
-          <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
+          {isUserTheAdmin() && <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>}
           <LogoutButton />
         </Form>
-  </Navbar.Collapse>
-</Navbar>
+      </Navbar.Collapse>
+    </Navbar>
   );
+
+  function isUserTheAdmin() {
+    if(organizationData.admin == user.name){
+      return true
+    }
+    return false
+  }
 }
 
 export default OrganizationMainPage;

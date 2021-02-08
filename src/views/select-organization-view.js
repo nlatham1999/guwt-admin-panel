@@ -67,23 +67,26 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
-        if(selection.admin == user.name){
-          return true
-        }
-        if(!selection.moderators){
-          return false
-        }
-        if(selection.moderators.includes(user.name)){
-          return true
-        }
+      if(selection.admin == user.name){
+        return true
+      }
+      return false
+    }
+
+    function isUserAModerator(selection) {
+      if(!selection.moderators){
         return false
+      }
+      if(selection.moderators.includes(user.name)){
+        return true
+      }
     }
 
     //handles the selection of an organization 
     function handleSelection(selection) {
       setOrganizationData(selection);
       setSelectedOrganization(selection);
-      if(isUserTheAdmin(selection)){
+      if(isUserTheAdmin(selection) || isUserAModerator(selection)){
         setOrganizationChosen(true)
         setOpen(false);
       }else{
