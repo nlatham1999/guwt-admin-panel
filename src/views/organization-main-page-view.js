@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import Home from "./home-view";
-import MemberView from "./memberView";
-import MediaView from "./mediaView";
+import MemberView from "./member-view";
+import MediaView from "./media-view";
 
 import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";

@@ -7,7 +7,7 @@ import axios from "axios";
 // import styles from "../css_modules/generalStyles.module.css";
 
 //import the edit stop component
-import EditStop from "./editStopView";
+import EditStop from "./edit-stop-view";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";

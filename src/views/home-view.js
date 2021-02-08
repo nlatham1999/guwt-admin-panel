@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button";
 import TourCell from "../components/tour-cell";
 import Card from "react-bootstrap/Card";
 
-import EditTour from "./editTourView";
+import EditTour from "./edit-tour-view";
 
 const Home = ({organizationData}) => {
   
