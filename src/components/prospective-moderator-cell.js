@@ -10,6 +10,9 @@ import { Col, Row } from "react-bootstrap";
 
 //tour cell component
 //parameters:
+//  prospectiveIndex: index of the prospective moderator among a list of moderators
+//  organizationData: the organization data
+//  setRefresh: setter so that the parent component can refresh
 const ProspectiveMemberCell = ({prospectiveIndex, organizationData, setRefresh}) => {
 
     return (

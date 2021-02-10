@@ -139,6 +139,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
         setOrgDepartement(event.target.value)
     }
 
+    //checks if an organization already exists so that duplicate organizations are not created
     function doesOrganizationExist(){
         if(organizationNames.includes(orgName)){
             return true;
@@ -146,6 +147,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
         return false;
     }
 
+    //gets the names of the different organizations
     function getOrganizationNames(){
         axios.get('https://backend.gonzagatours.app/api/organizations', {
             'headers': {

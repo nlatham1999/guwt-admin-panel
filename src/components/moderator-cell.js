@@ -10,7 +10,11 @@ import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 
 //tour cell component
-//parameters:
+//parameters:  
+//  moderatorIndex: the index of the moderator within the list of moderators
+//  organizationData: the organization data
+//  setRefresh: a setter so that the parent component will refresh
+
 const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
 
     const [disableRemove, setDisableRemove] = useState(true);
@@ -30,6 +34,7 @@ const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
         </Form>
     );
 
+    //determines whether the delete moderator button should be deleted
     function shouldDisableButton(){
         if(user.name == organizationData.admin){
             return false;
@@ -37,11 +42,13 @@ const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
         return true;
     }
 
+    //removes the moderator from the organization
     function removePerson(){
         organizationData.moderators.splice(moderatorIndex, 1);
         updateOrganization();
     }
 
+    //updates the organization
     function updateOrganization(){
         axios
         .put(
