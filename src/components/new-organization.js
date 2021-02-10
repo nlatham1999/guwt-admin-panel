@@ -46,7 +46,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => cancelAdding()}>Cancel</Button>
+                <Button variant="secondary" onClick={() => cancelAdding()}>OK</Button>
             </Modal.Footer>
         </Modal>
           );

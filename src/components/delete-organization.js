@@ -14,7 +14,8 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
     
     return (
         <>
-            <Button onClick={() => setDeleteOrgAlert(true)}>Delete Organization</Button>
+            <div>{organizationData.name}</div>
+            <Button onClick={() => setDeleteOrgAlert(true)}>{organizationData.name}Delete Organization</Button>
             <Modal show={deleteOrgAlert} animation={true}>
                 <Modal.Body>
                     <p>Are you really, really, sure you want to delete this organization??</p>
@@ -33,6 +34,26 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
         let url = "https://backend.gonzagatours.app/api/organization/"
         url = url + organizationData._id
 
+        //get all the tours for an organization so that we can delete them
+        axios.get('https://backend.gonzagatours.app/tour/tours/', {
+            'headers': {
+              'Authentication': process.env.REACT_APP_API_KEY
+            },
+            responseType: 'json',
+          })
+          .then(response => {
+            var data = []
+            var group
+            for(group in response.data.data){
+              var orgName = response.data.data[group].organization;
+              if(orgName == organizationData.name){
+                data.push(response.data.data[group])
+              }
+            }
+            deleteTours(data);
+        })
+
+        //delete the organization
         axios.delete(
             url,
             {
@@ -44,6 +65,21 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
             ).catch(function (error) {
                 console.log(error);
             });
+    }
+
+    //delete the tours
+    function deleteTours(tourData){
+        tourData.map((tour, i) => (
+        
+            axios.delete(
+                "https://backend.gonzagatours.app/tour/t/" + tour._id,
+            {
+                'headers': {
+                    'Authentication': process.env.REACT_APP_API_KEY
+                }
+            }
+            )
+        ))
     }
 }
 
