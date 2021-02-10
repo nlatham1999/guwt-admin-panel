@@ -1,17 +1,19 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
 import React, { useState } from "react";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
-import Home from "./homeView";
-import MemberView from "./memberView";
-import MediaView from "./mediaView";
+import Home from "./home-view";
+import MemberView from "./member-view";
+import MediaView from "./media-view";
 
 import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
-import DeleteOrganization from "../components/deleteOrganization";
+import DeleteOrganization from "../components/delete-organization";
 import LogoutButton from "../components/logout-button";
 
 
@@ -22,14 +24,14 @@ import LogoutButton from "../components/logout-button";
 const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 
   const [organizationViewChosen, setOrganizationViewChosen] = useState("home view");
-
+ 
   return (
 
     <Container>
       {/* add username somehow while passing tests -- i'm too tired (michael) */}
       <OrganizationNavigationBar organizationData={organizationData} setOrganizationViewChosen={setOrganizationViewChosen} setOrgChosen={setOrgChosen}/>
       
-      {organizationViewChosen === "home view" && <Home />}
+      {organizationViewChosen === "home view" && <Home organizationData={organizationData} />}
       {organizationViewChosen === "member view" && <MemberView organizationData={organizationData}/>}
       {organizationViewChosen === "media view" && <MediaView />}
     </Container>
@@ -38,6 +40,9 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
 }
 
 const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen, setOrgChosen}) => {
+
+  const {user} = useAuth0();
+
   return (
     <Navbar bg="light" expand="lg" style={{marginLeft: "0"}}>
       <Navbar.Brand>
@@ -61,12 +66,19 @@ const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen,
           </NavDropdown>
         </Nav>
         <Form inline>
-          <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>
+          {isUserTheAdmin() && <DeleteOrganization organizationData={organizationData} setOrgChosen={setOrgChosen}/>}
           <LogoutButton />
         </Form>
-  </Navbar.Collapse>
-</Navbar>
+      </Navbar.Collapse>
+    </Navbar>
   );
+
+  function isUserTheAdmin() {
+    if(organizationData.admin == user.name){
+      return true
+    }
+    return false
+  }
 }
 
 export default OrganizationMainPage;

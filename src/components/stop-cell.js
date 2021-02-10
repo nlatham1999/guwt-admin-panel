@@ -8,8 +8,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 
-import EditTour from "../views/editTourView";
-
 //tour cell component
 //parameters:
 //  setStopEditMode: sets whehteher we are editing a stop or not
@@ -24,7 +22,9 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
         <Form>
             <Form.Group as={Row}>
                 <Form.Label column sm={3}>
-                    name: {stops[stopIndex].name}
+                    {stops[stopIndex] &&
+                    <>name: {stops[stopIndex].stop_name}</>
+                    }       
                 </Form.Label>
                 <Button column sm={3}>
                     Stop Info

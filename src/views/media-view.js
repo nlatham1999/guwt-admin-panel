@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import pic from '../images/college-hall.jpg'
 import Button from "react-bootstrap/Button";
+import ImageUploader from 'react-images-upload';
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
@@ -10,32 +11,45 @@ import Button from "react-bootstrap/Button";
 const MediaView = () => {
     const randomTestText = "Images Available";
     const [isClicked, setisClicked] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null)
     // const [open, setOpen] = React.useState(false);
+
+    const onFileChange = (event) => {
+    
+        setSelectedFile(event.target.files[0])
+      
+    };
 
     return (
         <div>
-            <h1>This is the media view</h1>
-                stuff to do:
-                <ul>
-                    <li>connect to aws and display the media files</li>
-                    <li>allow selection of media files</li>
-                    <li>allow uploading of media</li>
-                </ul>
+            <>
+            <input type="file" onChange={onFileChange}/>
+            </>
             <Button onClick={() => displayMedia()}>Display Available Media</Button>
+            {
+                selectedFile &&
+                <div>
+                    {selectedFile.type}
+
+                </div>
+            }
             {
                 isClicked === true &&
                 <div>
-                <h1>
-                    {randomTestText}
-                </h1>
+                    <h1>
+                        {randomTestText}
+                    </h1>
                 {/* Display the image in the images folder
                 *IMPORTANT* require() can be used for .mp3, .mp4, .mov, .pdf etc
                 */}
-                <img src={pic} height="300" width="300" alt="Cannot Display"></img>
+                <img src={URL.createObjectURL(selectedFile)} height="300" width="300" alt="Cannot Display"></img>
+                     
                 </div>
             }
         </div>
     );
+
+
 
 
     function displayMedia(){

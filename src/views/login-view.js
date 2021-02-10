@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import LoginButton from "../components/login-button.js"
 
 //import the admin tutorial link button
-import AdminTutorialButton from "../components/AdminTutorial-button.js"
+import AdminTutorialButton from "../components/admin-tutorial-button.js"
 
 // //import the css module
 // import styles from "../css_modules/generalStyles.module.css";

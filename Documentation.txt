@@ -1,0 +1,41 @@
+This is the documentation for the frontend of the admin panel
+
+OVERVIEW
+this is written in react.js, if you're not fammilier with the language, W3 schools has some great rescoures
+We chose to use functional components and hooks in our project instead of doing the state components with the lifecyle
+This was done to keep the components more modular and flexible
+
+COMMANDS TO USE
+running the program: cd into this directory and run npm start
+
+STRUCTURE OF THE PROGRAM
+The code is located in the /src directory and is split into two groups
+/src/components/ holds all the individual components for the various views. 
+    The exception to this rule are some of the dropdown buttons which are in the view files
+/src/views/ hold the top level components for each view
+
+component dependency tree 
+
+App.js
+|   LoginView                           (view)
+|   |   LoginButton                     (component)  
+|   |   AdminTutorialButton             (component)                          
+|   SelectOrginization                  (view)
+|   |   LogoutButton                    (component)
+|   |   ViewDropdown                    (component)
+|   |   NewOrganization                 (component)
+|   |   OrganizationMainPage            (view)
+|   |   |   OrganizationNavigationBar   (component)
+|   |   |   |   DeleteOrganization      (component)
+|   |   |   |   LogoutButton            (component)
+|   |   |   Home                        (view)
+|   |   |   |   TourCell                (component)
+|   |   |   |   EditTourView            (view)
+|   |   |   |   |   StopCell            (component)
+|   |   |   |   |   EditStopView        (view)
+|   |   |   MemberView                  (view)
+|   |   |   |   ModeratorCell           (component)
+|   |   |   |   ProspectiveMemberCell   (component)
+|   |   |   MediaView                   (view)
+
+          

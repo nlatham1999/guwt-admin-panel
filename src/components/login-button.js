@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
 
+
+//login button component
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   return (
