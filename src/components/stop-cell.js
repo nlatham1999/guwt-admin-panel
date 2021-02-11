@@ -15,7 +15,7 @@ import { Col, Row } from "react-bootstrap";
 //  setStopIndex: sets the tour index: used for referenceing which tour was selected in the tour edit mode
 //  stops: the list of tours
 //  setStops: sets the tours
-const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, setDeleteStop}) => {
+const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, setDeleteStop, updateTour}) => {
 
     return (
         //display the stop names, and delete, info, and edit buttons
@@ -35,9 +35,42 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
                 <Button column sm={3} onClick={() => deleteStopButton()}>
                     Delete Stop
                 </Button>
+                <Button column sm={3} onClick={() => moveUp()}>
+                    ⬆
+                </Button>
+                <Button column sm={3} onClick={() => moveDown()}>
+                    ⬇
+                </Button>
             </Form.Group>
         </Form>
     );
+
+    //moves the stop up to the next index
+    function moveUp(){
+        if(stopIndex == 0){
+            return;
+        }
+
+        var tempStop = stops[stopIndex-1];
+        stops[stopIndex-1] = stops[stopIndex];
+        stops[stopIndex] = tempStop;
+
+        updateTour();
+        
+    }
+
+    //moves the stop down to the next index
+    function moveDown(){
+        if(stopIndex == stops.length - 1){
+            return;
+        }
+
+        var tempStop = stops[stopIndex+1];
+        stops[stopIndex+1] = stops[stopIndex];
+        stops[stopIndex] = tempStop;
+        
+        updateTour();
+    }
 
     function deleteStopButton(){
         setDeleteStop(true);
@@ -48,6 +81,19 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
         setStopIndex(stopIndex);
         setStopEditMode(true);
     }
+
+    // function updateTour(){
+    //     axios
+    //     .put(
+    //       'https://backend.gonzagatours.app/tour/t/' + tours[tourIndex]._id, 
+    //       tours[tourIndex],
+    //       {
+    //           'headers': {
+    //               'Authentication': process.env.REACT_APP_API_KEY
+    //           }
+    //     })
+    //     // setRefresh(true);
+    // }
 
 }
 

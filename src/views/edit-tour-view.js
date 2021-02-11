@@ -66,7 +66,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
             <Card style={{ width: '48rem' }}>
                 <Card.Body>
                 {tours[tourIndex].stops.map((stop, i) => (
-                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={stops} setStops={setStops} setDeleteStop={setDeleteStop}/>
+                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setStops={setStops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
                 ))}
                 </Card.Body>
             </Card>
@@ -85,6 +85,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
             // stop_id: "0", 
             stop_name: "New Stop",
             stop_desc: "description",
+            stop_number: tours[tourIndex].stops.length,
             lat: "0",
             long: "0",
             media: []
