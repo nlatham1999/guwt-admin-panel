@@ -82,19 +82,6 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
         setStopEditMode(true);
     }
 
-    // function updateTour(){
-    //     axios
-    //     .put(
-    //       'https://backend.gonzagatours.app/tour/t/' + tours[tourIndex]._id, 
-    //       tours[tourIndex],
-    //       {
-    //           'headers': {
-    //               'Authentication': process.env.REACT_APP_API_KEY
-    //           }
-    //     })
-    //     // setRefresh(true);
-    // }
-
 }
 
 export default StopCell

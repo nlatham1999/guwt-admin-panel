@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import pic from '../images/college-hall.jpg'
 import Button from "react-bootstrap/Button";
 import ImageUploader from 'react-images-upload';
+import Card from "react-bootstrap/Card";
+
+import MediaCell from '../components/media-cell'
 
 //import the css module
 // import styles from "../css_modules/generalStyles.module.css";
@@ -11,12 +14,15 @@ import ImageUploader from 'react-images-upload';
 const MediaView = () => {
     const randomTestText = "Images Available";
     const [isClicked, setisClicked] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null)
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [deleteMedia, setDeleteMedia] = useState(false);
     // const [open, setOpen] = React.useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     const onFileChange = (event) => {
-    
-        setSelectedFile(event.target.files[0])
+        selectedFiles.push(event.target.files[0])
+        setSelectedFiles(selectedFiles)
+        setRefresh(!refresh);
       
     };
 
@@ -25,27 +31,14 @@ const MediaView = () => {
             <>
             <input type="file" onChange={onFileChange}/>
             </>
-            <Button onClick={() => displayMedia()}>Display Available Media</Button>
-            {
-                selectedFile &&
-                <div>
-                    {selectedFile.type}
-
-                </div>
-            }
-            {
-                isClicked === true &&
-                <div>
-                    <h1>
-                        {randomTestText}
-                    </h1>
-                {/* Display the image in the images folder
-                *IMPORTANT* require() can be used for .mp3, .mp4, .mov, .pdf etc
-                */}
-                <img src={URL.createObjectURL(selectedFile)} height="300" width="300" alt="Cannot Display"></img>
-                     
-                </div>
-            }
+            <div>{selectedFiles.length}</div>
+            <Card style={{ width: '48rem' }}>
+                <Card.Body>
+                {selectedFiles.map((tour, i) => (
+                        <MediaCell mediaIndex={i} media={selectedFiles} setDeleteMedia={setDeleteMedia}/>
+                ))}
+                </Card.Body>
+            </Card>
         </div>
     );
 
