@@ -28,6 +28,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     const [stopIndex, setStopIndex] = useState(0);
     const [deleteStop, setDeleteStop] = useState(false); //determines whether to delete a stop or not
     const [triggerUpdateTour, setTriggerUpdateTour] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     if(deleteStop){
         tours[tourIndex].stops.splice(stopIndex, 1);
@@ -49,6 +50,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
 
     return (
         <div>
+            {tours[tourIndex].stops.length}
             {/* display the form to edit the tour name */}
             <Form>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -88,7 +90,10 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
             media: []
         }
         tours[tourIndex].stops.push(stop);
+        // setTourData(tours)
+        setStops(tours[tourIndex].stops)
         updateTour();
+        // setRefresh(!refresh);
         // stops.push(stop);
         // setStopIndex(stops.length - 1); //this line doesn't do anything, but the page does not rerender without it for some reason...
     }
@@ -110,7 +115,6 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
         })
         .then((response) => {
         }
-          
         )
         // setRefresh(true);
     }
