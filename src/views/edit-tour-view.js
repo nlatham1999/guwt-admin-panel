@@ -44,7 +44,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
 
     if(editStopMode){
         return (
-            <EditStop setEditStopMode={setEditStopMode} stops={stops} stopIndex={stopIndex} setTriggerUpdateTour={setTriggerUpdateTour}/>
+            <EditStop setEditStopMode={setEditStopMode} stops={tours[tourIndex].stops} stopIndex={stopIndex} setTriggerUpdateTour={setTriggerUpdateTour} tour_id={tours[tourIndex]._id}/>
         );
     }
 

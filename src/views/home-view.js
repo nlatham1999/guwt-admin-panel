@@ -79,7 +79,8 @@ const Home = ({organizationData}) => {
       name: "New Tour",
       organization: organizationData.name,
       description: "description",
-      stops: []
+      stops: [],
+      number_of_stops: 0
     }
     axios
     .post(

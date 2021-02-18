@@ -33,7 +33,7 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
       
       {organizationViewChosen === "home view" && <Home organizationData={organizationData} />}
       {organizationViewChosen === "member view" && <MemberView organizationData={organizationData}/>}
-      {organizationViewChosen === "media view" && <MediaView />}
+      {/* {organizationViewChosen === "media view" && <MediaView />} */}
     </Container>
 
   );

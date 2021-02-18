@@ -6,10 +6,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import { Col, Row } from "react-bootstrap";
+import MediaView from "./media-view";
 //import the css module
 
 
-const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour}) => {
+const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour_id}) => {
 
     return (
         <div>
@@ -53,6 +54,8 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour}) => 
             </Form>
 
             <Button onClick={() => goBackToTourEdit()}>go back</Button>
+
+            <MediaView tour_id={tour_id} stop_id={stops[stopIndex]._id}/>
         </div>
     );
 
