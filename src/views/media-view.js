@@ -113,7 +113,7 @@ const MediaView = ({tour_id, stop_id}) => {
     }
 
     function getMedia(){
-        setTest("4")
+        console.log("getting media")
         
         axios.get('https://backend.gonzagatours.app/media/ms/', {
             'headers': {

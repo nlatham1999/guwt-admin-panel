@@ -67,7 +67,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
-      if(selection.admin == user.name){
+      if(selection.admin === user.name){
         return true
       }
       return false

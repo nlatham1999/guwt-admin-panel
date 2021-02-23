@@ -149,6 +149,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
 
     //gets the names of the different organizations
     function getOrganizationNames(){
+        console.log("getting organization names")
         axios.get('https://backend.gonzagatours.app/api/organizations', {
             'headers': {
               'Authentication': process.env.REACT_APP_API_KEY

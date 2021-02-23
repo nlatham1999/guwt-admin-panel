@@ -1,12 +1,12 @@
 //this is a cell for displaying a piece of media within a list of media
 
-import React, { useState} from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 //Media cell component
 //parameters:

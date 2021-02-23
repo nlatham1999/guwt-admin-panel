@@ -24,7 +24,7 @@ import StopCell from "../components/stop-cell";
 const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
 
     const [editStopMode, setEditStopMode] = useState(false);
-    const [stops, setStops] = useState(tours[tourIndex].stops);
+    // const [stops, setStops] = useState(tours[tourIndex].stops);
     const [stopIndex, setStopIndex] = useState(0);
     const [deleteStop, setDeleteStop] = useState(false); //determines whether to delete a stop or not
     const [triggerUpdateTour, setTriggerUpdateTour] = useState(false);
@@ -66,7 +66,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
             <Card style={{ width: '48rem' }}>
                 <Card.Body>
                 {tours[tourIndex].stops.map((stop, i) => (
-                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setStops={setStops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
+                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
                 ))}
                 </Card.Body>
             </Card>
@@ -92,7 +92,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
         }
         tours[tourIndex].stops.push(stop);
         // setTourData(tours)
-        setStops(tours[tourIndex].stops)
+        // setStops(tours[tourIndex].stops)
         updateTour();
         // setRefresh(!refresh);
         // stops.push(stop);

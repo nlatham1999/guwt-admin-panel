@@ -1,7 +1,7 @@
 
 
-import React, { useState} from "react";
-import {GoogleApiWrapper} from 'google-maps-react';
+import React from "react";
+// import {GoogleApiWrapper} from 'google-maps-react';
 import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;

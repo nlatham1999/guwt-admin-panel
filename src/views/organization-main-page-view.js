@@ -1,12 +1,12 @@
 //View for the top bar and side bar for the organization view. all other organization views are children
 
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import Home from "./home-view";
 import MemberView from "./member-view";
-import MediaView from "./media-view";
+// import MediaView from "./media-view";
 
 import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
@@ -74,7 +74,7 @@ const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen,
   );
 
   function isUserTheAdmin() {
-    if(organizationData.admin == user.name){
+    if(organizationData.admin === user.name){
       return true
     }
     return false

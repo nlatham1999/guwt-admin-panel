@@ -1,12 +1,12 @@
 //this is a cell for displaying a stops in the list of stops within the tour edit view
 
-import React, { useState} from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 //tour cell component
 //parameters:
@@ -15,7 +15,7 @@ import { Col, Row } from "react-bootstrap";
 //  setStopIndex: sets the tour index: used for referenceing which tour was selected in the tour edit mode
 //  stops: the list of tours
 //  setStops: sets the tours
-const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, setDeleteStop, updateTour}) => {
+const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteStop, updateTour}) => {
 
     return (
         //display the stop names, and delete, info, and edit buttons
@@ -47,7 +47,7 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
 
     //moves the stop up to the next index
     function moveUp(){
-        if(stopIndex == 0){
+        if(stopIndex === 0){
             return;
         }
 
@@ -61,7 +61,7 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setStops, se
 
     //moves the stop down to the next index
     function moveDown(){
-        if(stopIndex == stops.length - 1){
+        if(stopIndex === stops.length - 1){
             return;
         }
 

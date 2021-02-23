@@ -1,11 +1,11 @@
 //component for the edit stop view
 //access through the EditTour component
 
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 import { Col, Row } from "react-bootstrap";
 import MediaView from "./media-view";
 //import the css module

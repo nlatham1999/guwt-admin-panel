@@ -32,7 +32,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
     function deleteTheOrganization(){
         let url = "https://backend.gonzagatours.app/api/organization/"
         url = url + organizationData._id
-
+        console.log("getting tour data to delete")
         //get all the tours for an organization so that we can delete them
         axios.get('https://backend.gonzagatours.app/tour/tours/', {
             'headers': {
@@ -45,7 +45,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
             var group
             for(group in response.data.data){
               var orgName = response.data.data[group].organization;
-              if(orgName == organizationData.name){
+              if(orgName === organizationData.name){
                 data.push(response.data.data[group])
               }
             }

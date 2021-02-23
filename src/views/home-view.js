@@ -114,7 +114,7 @@ const Home = ({organizationData}) => {
       var group
       for(group in response.data.data){
         var orgName = response.data.data[group].organization;
-        if(orgName == organizationData.name){
+        if(orgName === organizationData.name){
           data.push(response.data.data[group])
         }
       }
