@@ -2,7 +2,6 @@
 //accessed through the OrganizationMainPage component
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FormData, {getHeaders} from "form-data"
 import pic from '../images/college-hall.jpg'
 import Button from "react-bootstrap/Button";
 import ImageUploader from 'react-images-upload';
@@ -48,7 +47,7 @@ const MediaView = ({tour_id, stop_id}) => {
         }
 
         var data = new FormData();
-        data.append('media', image.raw);
+        data.append('files', image.raw);
         data.append('tour_id', tour_id);
         data.append('stop_id', stop_id);
         
@@ -61,7 +60,8 @@ const MediaView = ({tour_id, stop_id}) => {
           {
               'headers': {
                   'Authentication': process.env.REACT_APP_API_KEY,
-                  ...getHeaders(data)
+                  'content-type': 'multipart/form-data',
+                //   ...data.getHeaders()
               }
           }
         ).then((response) => {

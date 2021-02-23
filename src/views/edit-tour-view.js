@@ -21,7 +21,7 @@ import StopCell from "../components/stop-cell";
 //  tours: the list of tours in the organization
 //  setTours: updates the tours
 //  tourIndex: the index of the tour that we are currently editing
-const EditTour = ({setTourEditMode, tours, tourIndex}) => {
+const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
 
     const [editStopMode, setEditStopMode] = useState(false);
     const [stops, setStops] = useState(tours[tourIndex].stops);
@@ -37,7 +37,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     }
 
     if(triggerUpdateTour){
-        tours[tourIndex].stops[stopIndex] = stops[stopIndex];
+        // tours[tourIndex].stops[stopIndex] = stops[stopIndex];
         updateTour()
         setTriggerUpdateTour(false);
     }
@@ -115,6 +115,8 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
               }
         })
         .then((response) => {
+            loadTours()
+            setRefresh(!refresh)
         }
         )
         // setRefresh(true);

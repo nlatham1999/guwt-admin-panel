@@ -6,7 +6,7 @@
 //there will also be a side bar to go to the other views
 //there should also be a logout button at the topa
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Button from "react-bootstrap/Button";
@@ -26,12 +26,14 @@ const Home = ({organizationData}) => {
   const [deleteTour, setDeleteTour] = useState(false); //determines whether to delete a tour or not
   const [refresh, setRefresh] = useState(false); //call this when you want to rerender. kinda hacky but it works
 
-  loadTours();
+  useEffect(() => {
+    loadTours();
+  }, []);
   
   //checks if we are in the tour edit mode
   if(tourEditMode){
     return (
-      <EditTour setTourEditMode={setTourEditMode} tours={tourData} tourIndex={tourIndex}/>
+      <EditTour setTourEditMode={setTourEditMode} tours={tourData} tourIndex={tourIndex} loadTours={loadTours}/>
     );
   }
 
@@ -70,7 +72,8 @@ const Home = ({organizationData}) => {
       }
     )
     setDeleteTour(false);
-    setRefresh(!refresh);
+    loadTours();
+    // setRefresh(!refresh);
   }
 
   //adds a tour to the list
@@ -93,11 +96,13 @@ const Home = ({organizationData}) => {
       }
     )
 
-    setRefresh(!refresh);
+    loadTours();
+    // setRefresh(!refresh);
   }
 
     //gets the tours from the database
   function loadTours(){
+    console.log("loading tours")
     axios.get('https://backend.gonzagatours.app/tour/tours/', {
       'headers': {
         'Authentication': process.env.REACT_APP_API_KEY
@@ -114,6 +119,7 @@ const Home = ({organizationData}) => {
         }
       }
       setTourData(data)
+      setRefresh(!refresh)
     })
   }
 }

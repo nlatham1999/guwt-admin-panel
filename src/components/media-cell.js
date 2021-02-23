@@ -20,9 +20,9 @@ const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex}) => {
         //display the stop names, and delete, info, and edit buttons
         <Form>
             <Form.Group as={Row}>
-                <div>{media[mediaIndex].s3_loc + media[mediaIndex].s3_id}</div>
+                <div>{media[mediaIndex].s3_loc + " $ " + media[mediaIndex].s3_id}</div>
                 <Form.Label column sm={4}>
-                    <img src={media[mediaIndex].s3_loc + media[mediaIndex].s3_id} height="40" alt="Cannot Display"></img>
+                    <img src={media[mediaIndex].s3_loc + " $ " + media[mediaIndex].s3_id} height="40" alt="Cannot Display"></img>
                 </Form.Label>
                 <Button column sm={4} onClick={() => deleteMediaButton()}>
                     Delete Media

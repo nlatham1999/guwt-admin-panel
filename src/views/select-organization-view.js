@@ -123,6 +123,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     }
   
     React.useEffect(() => {
+      console.log("getting organization data")
       try {
         axios.get('https://backend.gonzagatours.app/api/organizations', {
           'headers': {
@@ -146,7 +147,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
       return () => {
         document.removeEventListener("click", handleClick);
       };
-    });
+    }, []);
   
     return (
       <div className="dropdown" ref={drop} >
