@@ -28,56 +28,50 @@ const MediaView = ({tour_id, stop_id}) => {
 
     useEffect(() => {
         getMedia();
-        // setTest("test2")
       }, []);
 
-    if(deleteMedia == true){
+    if(deleteMedia === true){
         deleteMediaFunc();
         setDeleteMedia(false);
     }
 
     const onFileChange = event => {
 
-        setTest("1");
-
         if (event.target.files.length) {
             setImage({
                 preview: URL.createObjectURL(event.target.files[0]),
                 raw: event.target.files[0]
             });
-        }
 
-        var data = new FormData();
-        data.append('media', image.raw);
-        data.append('tour_id', tour_id);
-        data.append('stop_id', stop_id);
-        
-        setTest("2");
-
-        axios
-        .post(
-          'https://backend.gonzagatours.app/media', 
-          data,
-          {
-              'headers': {
-                  'Authentication': process.env.REACT_APP_API_KEY,
-                  ...getHeaders(data)
+            var data = new FormData();
+            data.append('media', event.target.files[0]); //the FormData is not getting the appropriate image in time for the post to fire
+            data.append('tour_id', tour_id);
+            data.append('stop_id', stop_id);
+            
+    
+            axios
+            .post(
+              'https://backend.gonzagatours.app/media', 
+              data,
+              {
+                  'headers': {
+                      'Authentication': process.env.REACT_APP_API_KEY,
+                      'Content-Type': 'multipart/form-data'
+                  }
               }
-          }
-        ).then((response) => {
-            if (response.status === 201){
-                setTest("passed")
-                getMedia()
+            ).then((response) => {
+                if (response.status === 201){
+                    setTest("passed")
+                    getMedia()
+                }
+                else{
+                    setTest("failed")
+                }
             }
-            else{
-                setTest("failed")
-            }
-        }
-        )
-        
-        // setTest("3");
-        
-      
+            ).catch((error) =>{
+                console.log(error.message)
+            })
+        }                
     };
 
     return (
@@ -110,10 +104,10 @@ const MediaView = ({tour_id, stop_id}) => {
               }
           }
         )
+        getMedia()
     }
 
     function getMedia(){
-        setTest("4")
         
         axios.get('https://backend.gonzagatours.app/media/ms/', {
             'headers': {

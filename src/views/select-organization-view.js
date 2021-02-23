@@ -146,7 +146,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
       return () => {
         document.removeEventListener("click", handleClick);
       };
-    });
+    }, []);
   
     return (
       <div className="dropdown" ref={drop} >
