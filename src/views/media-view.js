@@ -8,7 +8,7 @@ import ImageUploader from 'react-images-upload';
 import Card from "react-bootstrap/Card";
 
 import MediaCell from '../components/media-cell'
-import { Form } from "react-bootstrap";
+import { Form, Row, Col, Container } from "react-bootstrap";
 
 
 //import the css module
@@ -24,6 +24,7 @@ const MediaView = ({tour_id, stop_id}) => {
     const [refresh, setRefresh] = useState(false);
     const [mediaIndex, setMediaIndex] = useState(0);
     const [test, setTest] = useState("0")
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     useEffect(() => {
         getMedia();
@@ -41,69 +42,78 @@ const MediaView = ({tour_id, stop_id}) => {
                 preview: URL.createObjectURL(event.target.files[0]),
                 raw: event.target.files[0]
             });   
-            console.log("uploading");
-
-            var data = new FormData();
-            data.append('media', event.target.files[0]); //the FormData is not getting the appropriate image in time for the post to fire
-            data.append('tour_id', tour_id);
-            data.append('stop_id', stop_id);
-            // console.log(data.keys())
-            axios
-                .post(
-                'https://backend.gonzagatours.app/media', 
-                data,
-                {
-                    'headers': {
-                        'Authentication': process.env.REACT_APP_API_KEY,
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }
-                )
-                .then((response) => {
-                    if (response.status === 201){
-                        console.log("passed")
-                        getMedia()
-                    }
-                    else{
-                        console.log("failed")
-                    }
-                }
-                )
-                .catch((error) =>{
-                    console.log(error.message)
-                })   
-        } 
+        }
+            
 
     };
 
     const handleUpload = async e => {        
         // e.preventDefault();
-        
+        console.log("uploading");
+
+        var data = new FormData();
+        data.append('media', image.raw); //the FormData is not getting the appropriate image in time for the post to fire
+        data.append('tour_id', tour_id);
+        data.append('stop_id', stop_id);
+        // console.log(data.keys())
+        axios
+            .post(
+            'https://backend.gonzagatours.app/media', 
+            data,
+            {
+                'headers': {
+                    'Authentication': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+            )
+            .then((response) => {
+                if (response.status === 201){
+                    console.log("passed")
+                    getMedia()
+                }
+                else{
+                    console.log("failed")
+                }
+            }
+            )
+            .catch((error) =>{
+                console.log(error.message)
+            }) 
     };
 
     return (
-        <div>
-            <>
-            <input type="file" onChange={onFileChange}/>
-            </>
-            <Button onClick={()=>handleUpload()}>upload</Button>
-            <img src={image.preview} height="40" alt="Cannot Display"></img>
-            <div>{selectedFiles.length}</div>
-            <div>{test}</div>
-            <Card style={{ width: '48rem' }}>
-                <Card.Body>
-                {selectedFiles.map((tour, i) => (
-                        <MediaCell mediaIndex={i} media={selectedFiles} setDeleteMedia={setDeleteMedia} setMediaIndex={setMediaIndex}/>
-                ))}
-                </Card.Body>
-            </Card>
-        </div>
+        <Container>
+            {console.log(selectedIndex)}
+            <Row>
+                <input type="file" onChange={onFileChange}/>
+                <img src={image.preview} height="40" alt=""></img>
+                <Button onClick={()=>handleUpload()}>upload</Button>
+            </Row>
+            <Row>
+                <Col>
+                    <Card style={{ width: '100%' }}>
+                        <Card.Body>
+                            {selectedFiles.map((tour, i) => (
+                                    <MediaCell mediaIndex={i} media={selectedFiles} setDeleteMedia={setDeleteMedia} setMediaIndex={setMediaIndex} setSelectedIndex={setSelectedIndex}/>
+                            ))}
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    {selectedIndex < selectedFiles.length && 
+                        <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + selectedFiles[selectedIndex].s3_id + ".jpg"} width="100%" alt=""></img>
+                    }
+                </Col>
+            </Row>
+        </Container>
     );
 
     function deleteMediaFunc(){
         let url = "https://backend.gonzagatours.app/media/m/"
         url = url + selectedFiles[mediaIndex]._id
     
+
         axios.delete(
           url,
           {
@@ -129,9 +139,9 @@ const MediaView = ({tour_id, stop_id}) => {
             for(group in response.data.data){
                 var tourID = response.data.data[group].tour_id;
                 var stopID = response.data.data[group].stop_id;
-                // if(stopID == stop_id && tourID == tour_id){
+                if(stopID == stop_id && tourID == tour_id){
                     data.push(response.data.data[group])
-                // }
+                }
             }
             setSelectedFiles(data)
         })

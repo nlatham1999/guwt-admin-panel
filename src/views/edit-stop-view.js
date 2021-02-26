@@ -55,10 +55,10 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
 
                             <Form.Group as={Row} controlId="formHorizontalEmail">
                                 <Form.Label column sm={4}>
-                                latitude
+                                latitude:
                                 </Form.Label>
                                 <Col sm={8}>
-                                <Form.Control placeholder={stopLatLng.lat} onChange={(event) => setLatitudeFromInput(event)}/>
+                                <Form.Control disabled={true} placeholder={stopLatLng.lat} onChange={(event) => setLatitudeFromInput(event)}/>
                                 </Col>
                             </Form.Group>
                             
@@ -67,7 +67,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
                                 longitude
                                 </Form.Label>
                                 <Col sm={8}>
-                                <Form.Control placeholder={stopLatLng.lng} onChange={(event) => setLongitudeFromInput(event)}/>
+                                <Form.Control disabled={true} placeholder={stopLatLng.lng} onChange={(event) => setLongitudeFromInput(event)}/>
                                 </Col>
                             </Form.Group>
                         </Form>
@@ -101,12 +101,14 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
 
     function setLatitudeFromInput(event){
         stops[stopIndex].lat = event.target.value;
+        stopLatLng.lat = parseFloat(event.target.value);
         // console.log("test 3")
         // setTriggerUpdateTour(true);
     }
 
     function setLongitudeFromInput(event){
         stops[stopIndex].lon = event.target.value;
+        stopLatLng.lng = parseFloat(event.target.value);
         // console.log("test 4")
         // setTriggerUpdateTour(true);
     }

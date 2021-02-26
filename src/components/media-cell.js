@@ -14,7 +14,7 @@ import { Row } from "react-bootstrap";
 //  setMediaIndex: sets the index of the piece of media
 //  media: the list of media
 //  setDeleteMedia: setter for deleting media
-const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex}) => {
+const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex, setSelectedIndex}) => {
 
     return (
         //display the stop names, and delete, info, and edit buttons
@@ -22,14 +22,22 @@ const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex}) => {
             <Form.Group as={Row}>
                 {/* <div>{media[mediaIndex].s3_loc + " " + media[mediaIndex].s3_id}</div> */}
                 <Form.Label column sm={4}>
-                    <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + media[mediaIndex].s3_id + ".png"} height="40" alt="Cannot Display"></img>
+                    <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + media[mediaIndex].s3_id + ".jpg"} height="40" alt="Cannot Display"></img>
                 </Form.Label>
                 <Button column sm={4} onClick={() => deleteMediaButton()}>
                     Delete Media
                 </Button>
+                <Button onClick={() => viewMedia()}>
+                    view
+                </Button>
             </Form.Group>
         </Form>
     );
+
+    function viewMedia(){
+        console.log("going in")
+        setSelectedIndex(mediaIndex)
+    }
 
     function deleteMediaButton(){
         setMediaIndex(mediaIndex);
