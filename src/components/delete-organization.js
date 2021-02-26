@@ -33,6 +33,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
         let url = "https://backend.gonzagatours.app/api/organization/"
         url = url + organizationData._id
         console.log("getting tour data to delete")
+
         //get all the tours for an organization so that we can delete them
         axios.get('https://backend.gonzagatours.app/tour/tours/', {
             'headers': {
@@ -53,6 +54,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
         })
 
         //delete the organization
+        console.log("deleting organization")
         axios.delete(
             url,
             {
@@ -69,9 +71,58 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
     //delete the tours
     function deleteTours(tourData){
         tourData.map((tour, i) => (
-        
+            
+            deleteMedia(tour)
+        ))
+
+        tourData.map((tour, i) => (
+            
+            deleteTour(tour)
+        ))
+            
+    }
+
+    function deleteTour(tour){
+        console.log("deleting tour")
+        try{
             axios.delete(
                 "https://backend.gonzagatours.app/tour/t/" + tour._id,
+            {
+                'headers': {
+                    'Authentication': process.env.REACT_APP_API_KEY
+                }
+            }
+            )
+        }catch{
+            console.log("failed deleting tour")
+        }
+    }
+
+    function deleteMedia(tour){
+        console.log("deleting media")
+        //get all the media for a tour so that we can delete them
+        var data = []
+        axios.get('https://backend.gonzagatours.app/media/ms/', {
+            'headers': {
+            'Authentication': process.env.REACT_APP_API_KEY
+            },
+            responseType: 'json',
+        })
+        .then(response => {
+            var group
+            for(group in response.data.data){
+                var tourID = response.data.data[group].tour_id;
+                if(tourID === tour._id){
+                    data.push(response.data.data[group])
+                }
+            }
+        })
+
+        console.log(data.length)
+
+        data.map((media, i) => (
+            axios.delete(
+                "https://backend.gonzagatours.app/media/m/" + media._id,
             {
                 'headers': {
                     'Authentication': process.env.REACT_APP_API_KEY

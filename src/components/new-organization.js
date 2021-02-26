@@ -13,7 +13,7 @@ import { Col, Row } from "react-bootstrap";
 
 //New Organization Component
 //  setAddNewOrganization: setter for a bool. Lets the parent component know whether to render the component or not
-const NewOrganization = ({setAddNewOrganization}) => {
+const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
 
     const [orgName, setOrgName] = useState(""); //holds the new organization name
     const [success, setSuccess] = useState(""); //used for showing the alert  
@@ -119,6 +119,7 @@ const NewOrganization = ({setAddNewOrganization}) => {
                     setSuccess(false)
                     setShow(true)
                 }
+                loadOrganizations()
             }
         )
     }

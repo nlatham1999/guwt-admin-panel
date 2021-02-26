@@ -112,8 +112,6 @@ const MediaView = ({tour_id, stop_id}) => {
     function deleteMediaFunc(){
         let url = "https://backend.gonzagatours.app/media/m/"
         url = url + selectedFiles[mediaIndex]._id
-    
-
         axios.delete(
           url,
           {
