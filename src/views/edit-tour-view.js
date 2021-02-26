@@ -81,13 +81,14 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
     }
 
     function goToAddStop(){
+        console.log("creating stop")
         const stop = {
             // stop_id: "0", 
             stop_name: "New Stop",
             stop_desc: "description",
             stop_number: tours[tourIndex].stops.length,
-            lat: "0",
-            long: "0",
+            lat: "47.668679",
+            long: "-117.411120",
             media: []
         }
         tours[tourIndex].stops.push(stop);
@@ -105,6 +106,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
     }
 
     function updateTour(){
+        console.log("updating the tour")
         axios
         .put(
           'https://backend.gonzagatours.app/tour/t/' + tours[tourIndex]._id, 
@@ -115,6 +117,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
               }
         })
         .then((response) => {
+            console.log("finished updating the tour")
             loadTours()
             setRefresh(!refresh)
         }

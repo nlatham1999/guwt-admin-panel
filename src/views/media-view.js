@@ -40,37 +40,45 @@ const MediaView = ({tour_id, stop_id}) => {
             setImage({
                 preview: URL.createObjectURL(event.target.files[0]),
                 raw: event.target.files[0]
-            });
+            });   
+            console.log("uploading");
 
             var data = new FormData();
             data.append('media', event.target.files[0]); //the FormData is not getting the appropriate image in time for the post to fire
             data.append('tour_id', tour_id);
             data.append('stop_id', stop_id);
-            
-    
+            // console.log(data.keys())
             axios
-            .post(
-              'https://backend.gonzagatours.app/media', 
-              data,
-              {
-                  'headers': {
-                      'Authentication': process.env.REACT_APP_API_KEY,
-                      'Content-Type': 'multipart/form-data'
-                  }
-              }
-            ).then((response) => {
-                if (response.status === 201){
-                    setTest("passed")
-                    getMedia()
+                .post(
+                'https://backend.gonzagatours.app/media', 
+                data,
+                {
+                    'headers': {
+                        'Authentication': process.env.REACT_APP_API_KEY,
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }
-                else{
-                    setTest("failed")
+                )
+                .then((response) => {
+                    if (response.status === 201){
+                        console.log("passed")
+                        getMedia()
+                    }
+                    else{
+                        console.log("failed")
+                    }
                 }
-            }
-            ).catch((error) =>{
-                console.log(error.message)
-            })
-        }                
+                )
+                .catch((error) =>{
+                    console.log(error.message)
+                })   
+        } 
+
+    };
+
+    const handleUpload = async e => {        
+        // e.preventDefault();
+        
     };
 
     return (
@@ -78,6 +86,7 @@ const MediaView = ({tour_id, stop_id}) => {
             <>
             <input type="file" onChange={onFileChange}/>
             </>
+            <Button onClick={()=>handleUpload()}>upload</Button>
             <img src={image.preview} height="40" alt="Cannot Display"></img>
             <div>{selectedFiles.length}</div>
             <div>{test}</div>

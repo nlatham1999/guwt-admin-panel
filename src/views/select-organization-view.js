@@ -139,9 +139,9 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
             }
             setResponseData(data)
           })
-        } catch (e) {
-          console.log("failed")
-        }
+      } catch (e) {
+        console.log("failed")
+      }
 
       document.addEventListener("click", handleClick);
       return () => {
