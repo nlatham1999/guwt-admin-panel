@@ -1,13 +1,13 @@
 //this is a cell for displaying the prospective members within the media view
 
-import React, { useState} from "react";
+import React from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 //tour cell component
 //parameters:  
@@ -17,7 +17,7 @@ import { Col, Row } from "react-bootstrap";
 
 const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
 
-    const [disableRemove, setDisableRemove] = useState(true);
+    // const [disableRemove, setDisableRemove] = useState(true);
     const { user } = useAuth0();    //holds user information
 
     return (
@@ -36,7 +36,7 @@ const ModeratorCell = ({moderatorIndex, organizationData, setRefresh}) => {
 
     //determines whether the delete moderator button should be deleted
     function shouldDisableButton(){
-        if(user.name == organizationData.admin){
+        if(user.name === organizationData.admin){
             return false;
         }
         return true;

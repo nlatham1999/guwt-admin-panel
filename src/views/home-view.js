@@ -33,7 +33,7 @@ const Home = ({organizationData}) => {
   //checks if we are in the tour edit mode
   if(tourEditMode){
     return (
-      <EditTour setTourEditMode={setTourEditMode} tours={tourData} tourIndex={tourIndex}/>
+      <EditTour setTourEditMode={setTourEditMode} tours={tourData} tourIndex={tourIndex} loadTours={loadTours}/>
     );
   }
 
@@ -72,7 +72,8 @@ const Home = ({organizationData}) => {
       }
     )
     setDeleteTour(false);
-    setRefresh(!refresh);
+    loadTours();
+    // setRefresh(!refresh);
   }
 
   //adds a tour to the list
@@ -95,11 +96,13 @@ const Home = ({organizationData}) => {
       }
     )
 
-    setRefresh(!refresh);
+    loadTours();
+    // setRefresh(!refresh);
   }
 
     //gets the tours from the database
   function loadTours(){
+    console.log("loading tours from the database...")
     axios.get('https://backend.gonzagatours.app/tour/tours', {
       'headers': {
         'Authentication': process.env.REACT_APP_API_KEY
@@ -107,15 +110,17 @@ const Home = ({organizationData}) => {
       responseType: 'json',
     })
     .then(response => {
+      console.log("finished getting tours from the database...")
       var data = []
       var group
       for(group in response.data.data){
         var orgName = response.data.data[group].organization;
-        if(orgName == organizationData.name){
+        if(orgName === organizationData.name){
           data.push(response.data.data[group])
         }
       }
       setTourData(data)
+      setRefresh(!refresh)
     })
   }
 }

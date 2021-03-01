@@ -1,12 +1,12 @@
 //this is a cell for displaying a piece of media within a list of media
 
-import React, { useState} from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 //Media cell component
 //parameters:
@@ -14,22 +14,30 @@ import { Col, Row } from "react-bootstrap";
 //  setMediaIndex: sets the index of the piece of media
 //  media: the list of media
 //  setDeleteMedia: setter for deleting media
-const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex}) => {
+const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex, setSelectedIndex}) => {
 
     return (
         //display the stop names, and delete, info, and edit buttons
         <Form>
             <Form.Group as={Row}>
-                <div>{media[mediaIndex].s3_loc + media[mediaIndex].s3_id}</div>
+                {/* <div>{media[mediaIndex].s3_loc + " " + media[mediaIndex].s3_id}</div> */}
                 <Form.Label column sm={4}>
-                    <img src={media[mediaIndex].s3_loc + media[mediaIndex].s3_id} height="40" alt="Cannot Display"></img>
+                    <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + media[mediaIndex].s3_id + ".jpg"} height="40" alt="Cannot Display"></img>
                 </Form.Label>
                 <Button column sm={4} onClick={() => deleteMediaButton()}>
                     Delete Media
                 </Button>
+                <Button onClick={() => viewMedia()}>
+                    view
+                </Button>
             </Form.Group>
         </Form>
     );
+
+    function viewMedia(){
+        console.log("going in")
+        setSelectedIndex(mediaIndex)
+    }
 
     function deleteMediaButton(){
         setMediaIndex(mediaIndex);

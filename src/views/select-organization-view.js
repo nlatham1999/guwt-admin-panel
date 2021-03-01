@@ -17,6 +17,11 @@ const SelectOrganization = () => {
     const [organizationData, setOrganizationData] = useState("temp org");
     const [organizationChosen, setOrganizationChosen] = useState(false);
     const [addNewOrganization, setAddNewOrganization] = useState(false);
+    const [responseData, setResponseData] = useState(null);
+
+    React.useEffect(() => {
+      loadOrganizations();
+    }, []);
 
     if(organizationChosen){
         return (
@@ -27,7 +32,7 @@ const SelectOrganization = () => {
         <Container className="p-3">
 
             {/* display the dropdown for an organization */}
-            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} />
+            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
 
             
             {/* if an organization has been chosen then run goToOrganization() */}
@@ -38,7 +43,7 @@ const SelectOrganization = () => {
             {/* sets up adding a new organization */}
             <br></br>
             <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-            {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} />}
+            {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
         </Container>
     );
 
@@ -47,13 +52,39 @@ const SelectOrganization = () => {
         setOrganizationChosen(true);
     }
 
+    function loadOrganizations(){
+      console.log("getting organization data")
+      try {
+        axios.get('https://backend.gonzagatours.app/api/organizations', {
+          'headers': {
+            'Authentication': process.env.REACT_APP_API_KEY
+          },
+        responseType: 'json',
+         })
+          .then(response => {
+            var data = []
+            var group
+            for(group in response.data.data){
+              data.push(response.data.data[group])
+            }
+            setResponseData(data)
+          })
+      } catch (e) {
+        console.log("failed")
+      }
+
+      // document.addEventListener("click", handleClick);
+      // return () => {
+      //   document.removeEventListener("click", handleClick);
+      // };
+    }
+
 }
 
 //dropdown button to choose an organization
-const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
+const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData}) => {
 
     const [open, setOpen] = React.useState(false);
-    const [responseData, setResponseData] = React.useState([""]);
     const [isAdminOfOrganization, setIsAdminOfOrganization] = React.useState(true);
     const [selectedOrganization, setSelectedOrganization] = React.useState(0);
     const drop = React.useRef(null);
@@ -67,7 +98,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
-      if(selection.admin == user.name){
+      if(selection.admin === user.name){
         return true
       }
       return false
@@ -122,36 +153,10 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData}) => {
       setIsAdminOfOrganization(true)
     }
   
-    React.useEffect(() => {
-      try {
-        axios.get('https://backend.gonzagatours.app/api/organizations', {
-          'headers': {
-            'Authentication': process.env.REACT_APP_API_KEY
-          },
-        responseType: 'json',
-         })
-          .then(response => {
-            var data = []
-            var group
-            for(group in response.data.data){
-              data.push(response.data.data[group])
-            }
-            setResponseData(data)
-          })
-        } catch (e) {
-          console.log("failed")
-        }
-
-      document.addEventListener("click", handleClick);
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
-    }, []);
-  
     return (
       <div className="dropdown" ref={drop} >
         <DropdownButton title="Select an Organization">
-            {responseData.map((item, i) => (
+            {responseData != null && responseData.map((item, i) => (
               <Dropdown.Item key={i} onClick={() => handleSelection(item)}>
                 {item.name}
               </Dropdown.Item>

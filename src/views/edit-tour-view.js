@@ -21,10 +21,10 @@ import StopCell from "../components/stop-cell";
 //  tours: the list of tours in the organization
 //  setTours: updates the tours
 //  tourIndex: the index of the tour that we are currently editing
-const EditTour = ({setTourEditMode, tours, tourIndex}) => {
+const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
 
     const [editStopMode, setEditStopMode] = useState(false);
-    const [stops, setStops] = useState(tours[tourIndex].stops);
+    // const [stops, setStops] = useState(tours[tourIndex].stops);
     const [stopIndex, setStopIndex] = useState(0);
     const [deleteStop, setDeleteStop] = useState(false); //determines whether to delete a stop or not
     const [triggerUpdateTour, setTriggerUpdateTour] = useState(false);
@@ -37,7 +37,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     }
 
     if(triggerUpdateTour){
-        tours[tourIndex].stops[stopIndex] = stops[stopIndex];
+        // tours[tourIndex].stops[stopIndex] = stops[stopIndex];
         updateTour()
         setTriggerUpdateTour(false);
     }
@@ -66,7 +66,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
             <Card style={{ width: '48rem' }}>
                 <Card.Body>
                 {tours[tourIndex].stops.map((stop, i) => (
-                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setStops={setStops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
+                        <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
                 ))}
                 </Card.Body>
             </Card>
@@ -81,18 +81,19 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     }
 
     function goToAddStop(){
+        console.log("creating stop")
         const stop = {
             // stop_id: "0", 
             stop_name: "New Stop",
             stop_desc: "description",
             stop_number: tours[tourIndex].stops.length,
-            lat: "0",
-            long: "0",
+            lat: "47.668679",
+            long: "-117.411120",
             media: []
         }
         tours[tourIndex].stops.push(stop);
         // setTourData(tours)
-        setStops(tours[tourIndex].stops)
+        // setStops(tours[tourIndex].stops)
         updateTour();
         // setRefresh(!refresh);
         // stops.push(stop);
@@ -105,6 +106,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
     }
 
     function updateTour(){
+        console.log("updating the tour")
         axios
         .put(
           'https://backend.gonzagatours.app/tour/t/' + tours[tourIndex]._id, 
@@ -115,6 +117,9 @@ const EditTour = ({setTourEditMode, tours, tourIndex}) => {
               }
         })
         .then((response) => {
+            console.log("finished updating the tour")
+            loadTours()
+            setRefresh(!refresh)
         }
         )
         // setRefresh(true);
