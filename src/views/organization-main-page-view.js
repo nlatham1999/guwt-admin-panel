@@ -15,16 +15,16 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import DeleteOrganization from "../components/delete-organization";
 import LogoutButton from "../components/logout-button";
-import pic from "../images/wide-vc-college-hall-2017.jpg"
+// import pic from "../images/wide-vc-college-hall-2017.jpg"
 
-//style that we are using for the page
-const pageStyle = {
-  width: '100%',
-  height: '100%',
-  // backgroundImage: `url(${pic})`,
-  position: 'absolute'
+// //style that we are using for the page
+// const pageStyle = {
+//   width: '100%',
+//   height: '100%',
+//   backgroundImage: `url(${pic})`,
+//   position: 'absolute'
 
-}
+// }
 
 //component for the main organization view
 //parameters:
@@ -36,7 +36,7 @@ const OrganizationMainPage = ({ setOrgChosen, organizationData }) => {
  
   return (
 
-    <div style={pageStyle}>
+    <div>
     <Container>
       {/* add username somehow while passing tests -- i'm too tired (michael) */}
       <OrganizationNavigationBar organizationData={organizationData} setOrganizationViewChosen={setOrganizationViewChosen} setOrgChosen={setOrgChosen}/>

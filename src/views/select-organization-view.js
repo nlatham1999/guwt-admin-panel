@@ -10,16 +10,6 @@ import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/new-organization";
 import { Dropdown, DropdownButton, Modal } from "react-bootstrap"; 
 import { useAuth0 } from "@auth0/auth0-react";
-import pic from "../images/wide-vc-college-hall-2017.jpg"
-
-//style that we are using for the page
-const pageStyle = {
-  width: '100%',
-  height: '100%',
-  backgroundImage: `url(${pic})`,
-  position: 'absolute'
-
-}
 
 const SelectOrganization = () => {
     
@@ -42,23 +32,23 @@ const SelectOrganization = () => {
         {/* if an organization has been chosen then run goToOrganization() */}
         {organizationChosen === true && goToOrganization()}
         {/* <img src={pic}></img> */}
-        <div style={pageStyle}>
-          <Container style={{width: "50%", marginTop: "10%"}}>
-            <Row className="justify-content-md-center" >
-              <Col>
-                {/* display the dropdown for an organization */}
-                <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
-              </Col>
-              <Col xs={20}>
-                {/* sets up adding a new organization */}
-                <Button variant="light" onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-              </Col>
-              <Col>
-                {/* display the logout button */}
-                <LogoutButton />
-              </Col>
-              {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
-            </Row>
+        <div>
+          <Container style={{width: "50%"}}>
+              <Row className="justify-content-md-center" style={{paddingTop: "10%"}} >
+                <Col>
+                  {/* display the dropdown for an organization */}
+                  <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
+                </Col>
+                <Col xs={20}>
+                  {/* sets up adding a new organization */}
+                  <Button variant="light" onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
+                </Col>
+                <Col>
+                  {/* display the logout button */}
+                  <LogoutButton />
+                </Col>
+                {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
+              </Row>
           </Container>
         </div>
         
@@ -102,17 +92,17 @@ const SelectOrganization = () => {
 //dropdown button to choose an organization
 const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData}) => {
 
-    const [open, setOpen] = React.useState(false);
+    // const [open, setOpen] = React.useState(false);
     const [isAdminOfOrganization, setIsAdminOfOrganization] = React.useState(true);
     const [selectedOrganization, setSelectedOrganization] = React.useState(0);
     const drop = React.useRef(null);
     const {user} = useAuth0();
 
-    function handleClick(e) {
-      if (!e.target.closest(`.${drop.current.className}`) && open) {
-        setOpen(false);
-      }
-    }
+    // function handleClick(e) {
+    //   if (!e.target.closest(`.${drop.current.className}`) && open) {
+    //     setOpen(false);
+    //   }
+    // }
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
@@ -137,7 +127,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData
       setSelectedOrganization(selection);
       if(isUserTheAdmin(selection) || isUserAModerator(selection)){
         setOrganizationChosen(true)
-        setOpen(false);
+        // setOpen(false);
       }else{
         setIsAdminOfOrganization(false)
       }
