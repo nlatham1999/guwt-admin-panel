@@ -13,7 +13,7 @@ const App = () => {
 
   if (isAuthenticated) {
     return (
-      <div className="mainApp">
+      <div className="mainApp" >
         <Route path="/" exact component={SelectOrginization} />
       </div>
     );

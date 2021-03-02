@@ -20,14 +20,13 @@ const MediaCell = ({mediaIndex, media, setDeleteMedia, setMediaIndex, setSelecte
         //display the stop names, and delete, info, and edit buttons
         <Form>
             <Form.Group as={Row}>
-                {/* <div>{media[mediaIndex].s3_loc + " " + media[mediaIndex].s3_id}</div> */}
-                <Form.Label column sm={4}>
+                <Form.Label column sm={7}>
                     <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + media[mediaIndex].s3_id + ".jpg"} height="40" alt="Cannot Display"></img>
                 </Form.Label>
-                <Button column sm={4} onClick={() => deleteMediaButton()}>
+                <Button variant="outline-danger" style={{marginRight: '1%'}} column sm={4} onClick={() => deleteMediaButton()}>
                     Delete Media
                 </Button>
-                <Button onClick={() => viewMedia()}>
+                <Button variant="outline-info" onClick={() => viewMedia()}>
                     view
                 </Button>
             </Form.Group>

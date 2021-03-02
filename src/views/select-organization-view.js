@@ -5,12 +5,21 @@ import React, { useState} from "react";
 import OrganizationMainPage from "./organization-main-page-view";
 import LogoutButton from "../components/logout-button";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
+import {Container, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/new-organization";
 import { Dropdown, DropdownButton, Modal } from "react-bootstrap"; 
 import { useAuth0 } from "@auth0/auth0-react";
+import pic from "../images/wide-vc-college-hall-2017.jpg"
 
+//style that we are using for the page
+const pageStyle = {
+  width: '100%',
+  height: '100%',
+  backgroundImage: `url(${pic})`,
+  position: 'absolute'
+
+}
 
 const SelectOrganization = () => {
     
@@ -29,22 +38,31 @@ const SelectOrganization = () => {
         );
     }
     return (
-        <Container className="p-3">
-
-            {/* display the dropdown for an organization */}
-            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
-
-            
-            {/* if an organization has been chosen then run goToOrganization() */}
-            {organizationChosen === true && goToOrganization()}
-
-            {/* display the logout button */}
-            <LogoutButton />
-            {/* sets up adding a new organization */}
-            <br></br>
-            <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-            {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
-        </Container>
+        <>
+        {/* if an organization has been chosen then run goToOrganization() */}
+        {organizationChosen === true && goToOrganization()}
+        {/* <img src={pic}></img> */}
+        <div style={pageStyle}>
+          <Container style={{width: "50%", marginTop: "10%"}}>
+            <Row className="justify-content-md-center" >
+              <Col>
+                {/* display the dropdown for an organization */}
+                <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
+              </Col>
+              <Col xs={20}>
+                {/* sets up adding a new organization */}
+                <Button variant="light" onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
+              </Col>
+              <Col>
+                {/* display the logout button */}
+                <LogoutButton />
+              </Col>
+              {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
+            </Row>
+          </Container>
+        </div>
+        
+        </>
     );
 
     function goToOrganization(){
@@ -155,7 +173,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData
   
     return (
       <div className="dropdown" ref={drop} >
-        <DropdownButton title="Select an Organization">
+        <DropdownButton variant="light" title="Select an Organization">
             {responseData != null && responseData.map((item, i) => (
               <Dropdown.Item key={i} onClick={() => handleSelection(item)}>
                 {item.name}

@@ -18,10 +18,10 @@ const MemberView = ({organizationData}) => {
     return (
         <>
         
-        <Card style={{ width: '48rem' }}>
+        <Card style={{ width: '48rem', marginTop: '1%' }}>
             <Card.Header>Admin: {" " + organizationData.admin}</Card.Header>
         </Card>
-        <Card style={{ width: '48rem' }}>
+        <Card style={{ width: '48rem', marginTop: '1%' }}>
             <Card.Header>Current Moderators</Card.Header>
             <Card.Body>
                 {organizationData.moderators.map((member, i) => (
@@ -29,7 +29,7 @@ const MemberView = ({organizationData}) => {
                 ))}
             </Card.Body>
         </Card>
-        <Card style={{ width: '48rem' }}>
+        <Card style={{ width: '48rem', marginTop: '1%' }}>
             <Card.Header>Prospective Moderators</Card.Header>
             <Card.Body>
                 {organizationData.prospectives.map((member, i) => (

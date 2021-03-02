@@ -14,7 +14,7 @@ const DeleteOrganization = ({organizationData, setOrgChosen}) => {
     
     return (
         <>
-            <Button onClick={() => setDeleteOrgAlert(true)}>Delete Organization</Button>
+            <Button variant="secondary" onClick={() => setDeleteOrgAlert(true)}>Delete Organization</Button>
             <Modal show={deleteOrgAlert} animation={true}>
                 <Modal.Body>
                     <p>Are you really, really, sure you want to delete this organization??</p>
