@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.5.0...v1.6.0) (2021-03-03)
+
+
+### Features
+
+* added a button to request to be a member and added lists of current and prospective members within the member view ([de4e634](https://github.com/michaelpeterswa/guwt-admin-panel/commit/de4e6340fe06bb587cf5c0eb49f304e3d344ea7b))
+* added a list of stops when in the tour edit mode, and worked on deleting tours ([9978af6](https://github.com/michaelpeterswa/guwt-admin-panel/commit/9978af65f4ce8a4f6cacf0e09df2414ac35c6b8a))
+* added a table to the media view to display media ([574af5a](https://github.com/michaelpeterswa/guwt-admin-panel/commit/574af5a9c16e2250635b1c0c9d36590c50ed623d))
+* added adding/deleting/editing tours and stops ([997e8b8](https://github.com/michaelpeterswa/guwt-admin-panel/commit/997e8b82f5ee6de224168ad89a430acbc0da8168))
+* added more comments ([8681ce6](https://github.com/michaelpeterswa/guwt-admin-panel/commit/8681ce6f28d42fc8113d1faaf561b105448b649b))
+* added table of tours for the home view ([c6a2ffa](https://github.com/michaelpeterswa/guwt-admin-panel/commit/c6a2ffa278479e7fbda7cdbc81e48823d5694a05))
+* added tutorial button ([de941b7](https://github.com/michaelpeterswa/guwt-admin-panel/commit/de941b715c6be8cbc741206837a19dd9e42dc7dd))
+* adding and deleting tours is now connected to the database ([246a2f0](https://github.com/michaelpeterswa/guwt-admin-panel/commit/246a2f015fab2c2f7eb085c8fa534f557ebf3651))
+* cleaned up files, added documentation, added uploading files in the media panel ([7756c50](https://github.com/michaelpeterswa/guwt-admin-panel/commit/7756c506a07be2cf8c35b5a043a61b4998d2ab31))
+* connected editing tours, and adding, editing, and deleting stops to the database ([3c994b3](https://github.com/michaelpeterswa/guwt-admin-panel/commit/3c994b3b0a128cb605de1db8034540c417414862))
+* fixed the infinite loops and added the create media ([e9f5551](https://github.com/michaelpeterswa/guwt-admin-panel/commit/e9f5551b4523bc8c0a365614a9ce9e59d635e64f))
+* fixed up the media view ([baf3d01](https://github.com/michaelpeterswa/guwt-admin-panel/commit/baf3d013c8ffe6ba5e9eade2ff54219c0103c834))
+* implemented adding a tour and started working on editing a tour ([7b200c1](https://github.com/michaelpeterswa/guwt-admin-panel/commit/7b200c142debbbaf7610a3948e050e881b84e15b))
+* implemented google maps ([45ffa30](https://github.com/michaelpeterswa/guwt-admin-panel/commit/45ffa306a128b604eb116e15a0da06febef7775b))
+* merging from upstream ([43907d6](https://github.com/michaelpeterswa/guwt-admin-panel/commit/43907d632b7b992f319d1bf69e978b9602e49769))
+* renamed file names to be more consistent ([b00a289](https://github.com/michaelpeterswa/guwt-admin-panel/commit/b00a2892ac15172bd8a73850338334143e23eb9f))
+* updated ui ([43f2b36](https://github.com/michaelpeterswa/guwt-admin-panel/commit/43f2b361105a232fa22c0ed8c359ab764dcc5643))
+* users can rearrange stops ([cc111ca](https://github.com/michaelpeterswa/guwt-admin-panel/commit/cc111cae17ba3d1d4aa259db6f0140813565cb1a))
+* users can request to be a moderator and current moderators can accept or decline ([6fa6c5a](https://github.com/michaelpeterswa/guwt-admin-panel/commit/6fa6c5a018e446deb484ed87c189b166694fca3a))
+* working on uploading images ([6234a40](https://github.com/michaelpeterswa/guwt-admin-panel/commit/6234a4067163b58f671c79505aacb4581cc26f70))
+
+
+### Bug Fixes
+
+* admins can no longer create duplicate organizations ([c3d3cbd](https://github.com/michaelpeterswa/guwt-admin-panel/commit/c3d3cbd7cdea8477972c6c69948aadcd78a38dcf))
+* CSS Tweaks related to marginTop (repl. with paddingTop) and photoshopped bg ([f3e597e](https://github.com/michaelpeterswa/guwt-admin-panel/commit/f3e597e94724586868c4f6b3c41f56c26b12aef2))
+* delete organization button is only available to admins, not moderators ([37c59c7](https://github.com/michaelpeterswa/guwt-admin-panel/commit/37c59c769cd2076931e967bb53799cef532d4455))
+* deleting an organization now deletes the organization's tours as well ([caea041](https://github.com/michaelpeterswa/guwt-admin-panel/commit/caea041c1f14142b791068d44e25177d72949960))
+* fixing infinite loops ([6376bc8](https://github.com/michaelpeterswa/guwt-admin-panel/commit/6376bc844faa14ec1444c50c9db0e03304b8f3d9))
+* last minute UI changes for the presentation demo ([b25484b](https://github.com/michaelpeterswa/guwt-admin-panel/commit/b25484b0f8029ff648af66b2914630b0675e5ed4))
+* moved google maps api key to env ([f783be3](https://github.com/michaelpeterswa/guwt-admin-panel/commit/f783be376ff5b5e29ecde463e9b7be43af8d6081))
+* no longer crashes after clicking edit stop right after creating it ([f5553c3](https://github.com/michaelpeterswa/guwt-admin-panel/commit/f5553c3663cad2905e947eb611b9a5db65180aab))
+* organization dropdown rerender whenever a new orgainzation is added ([4ae3db9](https://github.com/michaelpeterswa/guwt-admin-panel/commit/4ae3db906913f7d0ded2cbd9de62927349d3cf47))
+* package.json & package-lock.json to reduce vulnerabilities ([a8c71fb](https://github.com/michaelpeterswa/guwt-admin-panel/commit/a8c71fb037d88a0f53f852c8ab22be352d3a1b99))
+* resolved most warnings ([4d608c8](https://github.com/michaelpeterswa/guwt-admin-panel/commit/4d608c8a091cf5f27a5af33294933dd472552eb3))
+
 ## [1.5.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.4.1...v1.5.0) (2020-12-09)
 
 
