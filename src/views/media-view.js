@@ -104,7 +104,7 @@ const MediaView = ({tour_id, stop_id}) => {
                 </Col>
                 <Col>
                     {selectedIndex < selectedFiles.length && 
-                        <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + selectedFiles[selectedIndex].s3_id + ".jpg"} width="100%" alt=""></img>
+                        <img src={"https://guwt-media.s3-us-west-2.amazonaws.com/" + selectedFiles[selectedIndex].s3_id + ".jpg"} height="300" alt=""></img>
                     }
                 </Col>
             </Row>

@@ -16,7 +16,8 @@ const pageStyle = {
   backgroundImage: `url(${pic})`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat'
+  backgroundRepeat: 'no-repeat',
+  paddingTop: '20px'
 
 }
 

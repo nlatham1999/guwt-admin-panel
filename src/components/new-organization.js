@@ -40,7 +40,7 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
                 <Alert variant="success">
                     <Alert.Heading>201: Created Resource</Alert.Heading>
                     <p>
-                        Organization: {orgName} at {orgDepartment}
+                        Organization: {orgDepartment} at {orgName}
                     </p>
                 </Alert>
             </Modal.Body>
@@ -64,10 +64,10 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
                 <Form>
                     <Form.Group as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={4}>
-                        {organizationNames[0]}
+                        Unique Organization Name
                         </Form.Label>
                         <Col sm={8}>
-                        <Form.Control placeholder="Gonzaga Univ." onChange={setNameFromInput}/>
+                        <Form.Control placeholder="Gonzaga History" onChange={setNameFromInput}/>
                         </Col>
                     </Form.Group>
 
@@ -76,7 +76,7 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
                         Department
                         </Form.Label>
                         <Col sm={8}>
-                        <Form.Control placeholder="History" onChange={setDepartmentFromInput} />
+                        <Form.Control placeholder="HistoryTours" onChange={setDepartmentFromInput} />
                         </Col>
                     </Form.Group>
                 </Form>

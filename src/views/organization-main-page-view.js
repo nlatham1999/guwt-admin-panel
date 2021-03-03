@@ -55,7 +55,7 @@ const OrganizationNavigationBar = ({organizationData, setOrganizationViewChosen,
   const {user} = useAuth0();
 
   return (
-    <Navbar bg="light" expand="lg" style={{marginLeft: "0"}}>
+    <Navbar bg="light" expand="lg" style={{marginLeft: "0", borderRadius: "5px"}}>
       <Navbar.Brand>
         <img
           src="https://i.imgur.com/VxWiFjF.jpeg"

@@ -166,7 +166,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData
         <DropdownButton variant="light" title="Select an Organization">
             {responseData != null && responseData.map((item, i) => (
               <Dropdown.Item key={i} onClick={() => handleSelection(item)}>
-                {item.name}
+                {item.department + " at " + item.name}
               </Dropdown.Item>
             ))}
         </DropdownButton>
