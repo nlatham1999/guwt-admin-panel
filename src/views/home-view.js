@@ -44,7 +44,7 @@ const Home = ({organizationData}) => {
   return (
     <div>
       {/* display the list of tour cells */}
-      <Card style={{ width: '48rem' }}>
+      <Card style={{ width: '48rem', marginTop: '2%'}}>
         <Card.Body>
           {tourData.map((tour, i) => (
                 <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData} setDeleteTour={setDeleteTour}/>
@@ -53,7 +53,7 @@ const Home = ({organizationData}) => {
       </Card>
       
       {/* display the adding tour button */}
-      <Button onClick={() => addTourButton()}>create new tour</Button>
+      <Button style={{ marginTop: '2%'}} onClick={() => addTourButton()}>create new tour</Button>
     </div>
   );
 

@@ -86,11 +86,13 @@ const MediaView = ({tour_id, stop_id}) => {
         <Container>
             {console.log(selectedIndex)}
             <Row>
-                <input type="file" onChange={onFileChange}/>
-                <img src={image.preview} height="40" alt=""></img>
-                <Button onClick={()=>handleUpload()}>upload</Button>
+                <Col>
+                    <input type="file" onChange={onFileChange}/>
+                    <img src={image.preview} height="40" alt=""></img>
+                    <Button variant="outline-primary" onClick={()=>handleUpload()}>upload</Button>
+                </Col>
             </Row>
-            <Row>
+            <Row style={{marginTop: '1%'}}>
                 <Col>
                     <Card style={{ width: '100%' }}>
                         <Card.Body>

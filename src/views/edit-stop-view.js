@@ -6,7 +6,7 @@ import React,{ useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 // import Card from "react-bootstrap/Card";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Card } from "react-bootstrap";
 import MediaView from "./media-view";
 //import the css module
 import Map from "../components/map";
@@ -24,7 +24,9 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
 
     return (
         <div>
-            <Container style={{paddingBottom: "4em"}}>
+            <Card style={{marginTop: '2%'}}>
+            <Card.Header>Stop Information</Card.Header>
+            <Container style={{margin: '1%'}}>
                 <Row>
                     <Col>
                         <Map stopLatLng={stopLatLng} setStopLatLng={setStopLatLng}/>
@@ -32,9 +34,9 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
 
             {/* form to change the stop info */}
                     <Col>
-                        <Button onClick={() => updateStop()}>update stop</Button>
-                        <Button onClick={() => goBackToTourEdit()}>go back</Button>
-                        <Form>
+                        <Button variant="outline-primary" style={{marginRight: '1%'}}onClick={() => updateStop()}>update stop</Button>
+                        <Button variant="outline-primary" onClick={() => goBackToTourEdit()}>go back</Button>
+                        <Form style={{marginTop: '1%'}}>
                             <Form.Group as={Row} controlId="formHorizontalEmail">
                                 <Form.Label column sm={4}>
                                 Stop Name
@@ -74,9 +76,15 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
                     </Col>
                 </Row>
             </Container>
+            </Card>
 
-
+            
+            <Card style={{marginTop: '2%'}}>
+            <Card.Header>Stop Media</Card.Header>
+            <div style={{margin: '1%'}}>
             <MediaView tour_id={tour_id} stop_id={stops[stopIndex]._id}/>
+            </div>
+            </Card>
         </div>
     );
 

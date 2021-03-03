@@ -49,21 +49,22 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
     }
 
     return (
-        <div>
-            {tours[tourIndex].stops.length}
+        <div >
             {/* display the form to edit the tour name */}
-            <Form>
-                <Form.Group as={Row} controlId="formHorizontalEmail">
-                    <Form.Label column sm={4}>
-                    Tour Name
-                    </Form.Label>
-                    <Col sm={8}>
-                    <Form.Control placeholder={tours[tourIndex].name} onChange={(event) => setNameFromInput(event)}/>
-                    </Col>
-                </Form.Group>
-            </Form>
+            <Card style={{marginTop: '2%'}}>
+                <Form>
+                    <Form.Group as={Row} controlId="formHorizontalEmail">
+                        <Form.Label column sm={4}>
+                        Tour Name
+                        </Form.Label>
+                        <Col sm={8}>
+                        <Form.Control placeholder={tours[tourIndex].name} onChange={(event) => setNameFromInput(event)}/>
+                        </Col>
+                    </Form.Group>
+                </Form>
+            </Card>
             {/* display the list of stops */}
-            <Card style={{ width: '48rem' }}>
+            <Card style={{ width: '48rem', marginTop: '2%' }}>
                 <Card.Body>
                 {tours[tourIndex].stops.map((stop, i) => (
                         <StopCell setStopEditMode={setEditStopMode} stopIndex={i} setStopIndex={setStopIndex} stops={tours[tourIndex].stops} setDeleteStop={setDeleteStop} updateTour={updateTour}/>
@@ -71,8 +72,8 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
                 </Card.Body>
             </Card>
             {/* go back home button */}
-            <Button onClick={() => goBackToHome()}>go back</Button>
-            <Button onClick={() => goToAddStop()}>add stop</Button>
+            <Button style={{ marginTop: '2%' }} onClick={() => goBackToHome()}>go back</Button>
+            <Button style={{ marginTop: '2%', marginLeft: '1%' }} onClick={() => goToAddStop()}>add stop</Button>
         </div>
     );
 

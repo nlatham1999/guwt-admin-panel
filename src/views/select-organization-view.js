@@ -5,12 +5,11 @@ import React, { useState} from "react";
 import OrganizationMainPage from "./organization-main-page-view";
 import LogoutButton from "../components/logout-button";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
+import {Container, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import NewOrganization from "../components/new-organization";
 import { Dropdown, DropdownButton, Modal } from "react-bootstrap"; 
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 const SelectOrganization = () => {
     
@@ -29,22 +28,31 @@ const SelectOrganization = () => {
         );
     }
     return (
-        <Container className="p-3">
-
-            {/* display the dropdown for an organization */}
-            <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
-
-            
-            {/* if an organization has been chosen then run goToOrganization() */}
-            {organizationChosen === true && goToOrganization()}
-
-            {/* display the logout button */}
-            <LogoutButton />
-            {/* sets up adding a new organization */}
-            <br></br>
-            <Button onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
-            {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
-        </Container>
+        <>
+        {/* if an organization has been chosen then run goToOrganization() */}
+        {organizationChosen === true && goToOrganization()}
+        {/* <img src={pic}></img> */}
+        <div>
+          <Container style={{width: "50%"}}>
+              <Row className="justify-content-md-center" style={{paddingTop: "10%"}} >
+                <Col>
+                  {/* display the dropdown for an organization */}
+                  <ViewDropdown setOrganizationChosen={setOrganizationChosen} setOrganizationData={setOrganizationData} responseData={responseData}/>
+                </Col>
+                <Col xs={20}>
+                  {/* sets up adding a new organization */}
+                  <Button variant="light" onClick={() => setAddNewOrganization(true)}>add a new organization</Button>
+                </Col>
+                <Col>
+                  {/* display the logout button */}
+                  <LogoutButton />
+                </Col>
+                {addNewOrganization === true && <NewOrganization  setAddNewOrganization={setAddNewOrganization} loadOrganizations={loadOrganizations}/>}
+              </Row>
+          </Container>
+        </div>
+        
+        </>
     );
 
     function goToOrganization(){
@@ -84,17 +92,17 @@ const SelectOrganization = () => {
 //dropdown button to choose an organization
 const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData}) => {
 
-    const [open, setOpen] = React.useState(false);
+    // const [open, setOpen] = React.useState(false);
     const [isAdminOfOrganization, setIsAdminOfOrganization] = React.useState(true);
     const [selectedOrganization, setSelectedOrganization] = React.useState(0);
     const drop = React.useRef(null);
     const {user} = useAuth0();
 
-    function handleClick(e) {
-      if (!e.target.closest(`.${drop.current.className}`) && open) {
-        setOpen(false);
-      }
-    }
+    // function handleClick(e) {
+    //   if (!e.target.closest(`.${drop.current.className}`) && open) {
+    //     setOpen(false);
+    //   }
+    // }
     
     //checks to see if the user is an admin
     function isUserTheAdmin(selection) {
@@ -119,7 +127,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData
       setSelectedOrganization(selection);
       if(isUserTheAdmin(selection) || isUserAModerator(selection)){
         setOrganizationChosen(true)
-        setOpen(false);
+        // setOpen(false);
       }else{
         setIsAdminOfOrganization(false)
       }
@@ -155,7 +163,7 @@ const ViewDropdown = ({ setOrganizationChosen, setOrganizationData, responseData
   
     return (
       <div className="dropdown" ref={drop} >
-        <DropdownButton title="Select an Organization">
+        <DropdownButton variant="light" title="Select an Organization">
             {responseData != null && responseData.map((item, i) => (
               <Dropdown.Item key={i} onClick={() => handleSelection(item)}>
                 {item.name}

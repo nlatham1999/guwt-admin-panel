@@ -26,19 +26,19 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteSto
                     <>name: {stops[stopIndex].stop_name}</>
                     }       
                 </Form.Label>
-                <Button column sm={3}>
+                <Button style={{marginRight: '1%'}} column sm={3}>
                     Stop Info
                 </Button>
-                <Button column sm={3} onClick={() => editStopButton()}>
+                <Button style={{marginRight: '1%'}} column sm={3} onClick={() => editStopButton()}>
                     Edit Stop
                 </Button>
-                <Button column sm={3} onClick={() => deleteStopButton()}>
+                <Button variant="warning" style={{marginRight: '1%'}} column sm={3} onClick={() => deleteStopButton()}>
                     Delete Stop
                 </Button>
-                <Button column sm={3} onClick={() => moveUp()}>
+                <Button variant="link" column sm={3} onClick={() => moveUp()}>
                     ⬆
                 </Button>
-                <Button column sm={3} onClick={() => moveDown()}>
+                <Button variant="link" column sm={3} onClick={() => moveDown()}>
                     ⬇
                 </Button>
             </Form.Group>

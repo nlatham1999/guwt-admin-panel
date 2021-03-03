@@ -27,13 +27,13 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
                 <Form.Label column sm={3}>
                     no. of stops: {tours[tourIndex].stops.length}
                 </Form.Label>
-                <Button column sm={3}>
+                <Button style={{marginRight: '1%'}} column sm={3}>
                     Tour Info
                 </Button>
-                <Button column sm={3} onClick={() => editTourButton()}>
+                <Button style={{marginRight: '1%'}} column sm={3} onClick={() => editTourButton()}>
                     Edit Tour
                 </Button>
-                <Button column sm={3} onClick={() => deleteTourButton()}>
+                <Button  variant="warning" column sm={3} onClick={() => deleteTourButton()}>
                     Delete Tour
                 </Button>
             </Form.Group>
