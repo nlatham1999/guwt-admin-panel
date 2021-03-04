@@ -100,13 +100,13 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
 
     //creates a new organization from the form and uploads it to the server
     function addOrganization(){
-        // if(creatorPassword != process.env.CREATE_ORGANIZATION_PASSWORD){
-        //     console.log(process.env.CREATE_ORGANIZATION_PASSWORD);
-        //     console.log("failed")
-        //     return 
-        // }else{
-        //     console.log("passed");
-        // }
+        if(creatorPassword !== process.env.REACT_APP_CREATE_ORGANIZATION_PASSWORD){
+            console.log(process.env.REACT_APP_CREATE_ORGANIZATION_PASSWORD);
+            console.log("failed")
+            return 
+        }else{
+            console.log("passed");
+        }
         if(doesOrganizationExist()){
             return
         }
