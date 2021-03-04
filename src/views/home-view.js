@@ -12,6 +12,8 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import TourCell from "../components/tour-cell";
 import Card from "react-bootstrap/Card";
+import TourInfo from "../components/tour-info";
+import NewOrganization from '../components/new-organization';
 
 import EditTour from "./edit-tour-view";
 
@@ -25,6 +27,7 @@ const Home = ({organizationData}) => {
   const [tourIndex, setTourIndex] = useState(0);  //the index of the tour that is currently selected
   const [deleteTour, setDeleteTour] = useState(false); //determines whether to delete a tour or not
   const [refresh, setRefresh] = useState(false); //call this when you want to rerender. kinda hacky but it works
+  const [showTourInfo, setShowTourInfo] = useState(false);
 
   useEffect(() => {
     loadTours();
@@ -37,6 +40,8 @@ const Home = ({organizationData}) => {
     );
   }
 
+  
+
 
   if(deleteTour){
     deleteTourFunc();
@@ -44,11 +49,13 @@ const Home = ({organizationData}) => {
 
   return (
     <div>
+      {/* <NewOrganization  setAddNewOrganization={null} loadOrganizations={null}/> */}
+      
       {/* display the list of tour cells */}
       <Card style={{ width: '100%', marginTop: '2%'}}>
         <Card.Body>
           {tourData.map((tour, i) => (
-                <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData} setDeleteTour={setDeleteTour}/>
+                <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData}/>
           ))}
         </Card.Body>
       </Card>

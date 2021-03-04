@@ -7,6 +7,7 @@ import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Row, FormCheck } from "react-bootstrap";
+import TourInfo from "./tour-info";
 
 //tour cell component
 //parameters:
@@ -18,9 +19,13 @@ import { Row, FormCheck } from "react-bootstrap";
 const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTour}) => {
 
     const [enabled, setEnabled] = useState(true); //tours[tourIndex].enabled
+    const [showTourInfo, setShowTourInfo] = useState(false);
 
     return (
         //display the tour name and #of stops, and delete, info, and edit buttons
+        <>
+        {console.log(showTourInfo)}
+        {showTourInfo && <TourInfo setShowTourInfo={setShowTourInfo} tour={tours[tourIndex]}/>}
         <Form>
             <Form.Group as={Row}>
                 <Form.Label column sm={3}>
@@ -29,7 +34,7 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
                 <Form.Label column sm={3}>
                     no. of stops: {tours[tourIndex].stops.length}
                 </Form.Label>
-                <Button style={{marginRight: '1%'}} column sm={3}>
+                <Button style={{marginRight: '1%'}} column sm={3} onClick={() => tourInfoButton()}>
                     Tour Info
                 </Button>
                 <Button style={{marginRight: '1%'}} column sm={3} onClick={() => editTourButton()}>
@@ -41,6 +46,7 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
                 <FormCheck id={tourIndex+1} type="switch" label="Enable" defaultChecked={enabled} onChange={() => handleSwitchChange()}/>
             </Form.Group>
         </Form>
+        </>
     );
 
     function handleSwitchChange(){
@@ -56,6 +62,10 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
 
     function deleteTourButton(){
         setDeleteTour(true);
+    }
+
+    function tourInfoButton(){
+        setShowTourInfo(true);
     }
 
 }
