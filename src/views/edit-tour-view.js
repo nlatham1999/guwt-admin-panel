@@ -61,6 +61,14 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
                         <Form.Control placeholder={tours[tourIndex].name} onChange={(event) => setNameFromInput(event)}/>
                         </Col>
                     </Form.Group>
+                    <Form.Group as={Row} controlId="formHorizontalEmail">
+                        <Form.Label column sm={4}>
+                        Tour Description
+                        </Form.Label>
+                        <Col sm={8}>
+                        <Form.Control placeholder={tours[tourIndex].description} onChange={(event) => setDescriptionFromInput(event)}/>
+                        </Col>
+                    </Form.Group>
                 </Form>
             </Card>
             {/* display the list of stops */}
@@ -103,6 +111,11 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
 
     function setNameFromInput(event){
         tours[tourIndex].name = event.target.value;
+        updateTour();
+    }
+
+    function setDescriptionFromInput(event){
+        tours[tourIndex].description = event.target.value;
         updateTour();
     }
 

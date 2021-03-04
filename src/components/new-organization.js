@@ -22,7 +22,8 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
     const [orgDepartment, setOrgDepartement] = useState("");    //holds the organization name
     const { user } = useAuth0();    //holds user information
     const [organizationNames, setOrganizationNames] = useState([]); //holds the names if the other organizations
-    
+    const [creatorPassword, setCreatorPassword] = useState([]);
+
     //this is our constructor
     useEffect(() => {
         getOrganizationNames();
@@ -64,6 +65,14 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
                 <Form>
                     <Form.Group as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={4}>
+                        Creator Password
+                        </Form.Label>
+                        <Col sm={8}>
+                        <Form.Control onChange={setCreatorPasswordFromInput}/>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="formHorizontalEmail">
+                        <Form.Label column sm={4}>
                         Unique Organization Name
                         </Form.Label>
                         <Col sm={8}>
@@ -91,6 +100,13 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
 
     //creates a new organization from the form and uploads it to the server
     function addOrganization(){
+        if(creatorPassword !== process.env.REACT_APP_CREATE_ORGANIZATION_PASSWORD){
+            console.log(process.env.REACT_APP_CREATE_ORGANIZATION_PASSWORD);
+            console.log("failed")
+            return 
+        }else{
+            console.log("passed");
+        }
         if(doesOrganizationExist()){
             return
         }
@@ -122,6 +138,10 @@ const NewOrganization = ({setAddNewOrganization, loadOrganizations}) => {
                 loadOrganizations()
             }
         )
+    }
+
+    function setCreatorPasswordFromInput(event){
+        setCreatorPassword(event.target.value);
     }
 
     //action for the cancel button

@@ -15,5 +15,4 @@ COPY . .
 EXPOSE 5000
 
 # run npm start
-CMD "npm run build"
-CMD "serve -s build"
+CMD "npm run build && serve -s build"

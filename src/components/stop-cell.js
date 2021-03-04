@@ -1,12 +1,13 @@
 //this is a cell for displaying a stops in the list of stops within the tour edit view
 
-import React from "react";
+import React, { useState } from "react";
 // import axios from "axios";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Row } from "react-bootstrap";
+import StopInfo from "./stop-info";
 
 //tour cell component
 //parameters:
@@ -17,8 +18,12 @@ import { Row } from "react-bootstrap";
 //  setStops: sets the tours
 const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteStop, updateTour}) => {
 
+    const [showStopInfo, setShowStopInfo] = useState(false);
+
     return (
         //display the stop names, and delete, info, and edit buttons
+        <>
+        {showStopInfo && <StopInfo setShowStopInfo={setShowStopInfo} stop={stops[stopIndex]}/>}
         <Form>
             <Form.Group as={Row}>
                 <Form.Label column sm={3}>
@@ -26,7 +31,7 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteSto
                     <>Stop: {stops[stopIndex].stop_name}</>
                     }       
                 </Form.Label>
-                <Button style={{marginRight: '1%'}} column sm={3}>
+                <Button style={{marginRight: '1%'}} column sm={3} onClick={() => stopInfoButton()}>
                     Stop Info
                 </Button>
                 <Button style={{marginRight: '1%'}} column sm={3} onClick={() => editStopButton()}>
@@ -43,6 +48,7 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteSto
                 </Button>
             </Form.Group>
         </Form>
+        </>
     );
 
     //moves the stop up to the next index
@@ -80,6 +86,10 @@ const StopCell = ({setStopEditMode, stopIndex, setStopIndex, stops, setDeleteSto
     function editStopButton(){
         setStopIndex(stopIndex);
         setStopEditMode(true);
+    }
+
+    function stopInfoButton(){
+        setShowStopInfo(true);
     }
 
 }

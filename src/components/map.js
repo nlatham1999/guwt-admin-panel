@@ -39,7 +39,7 @@ const Map = ({stopLatLng, setStopLatLng}) => {
       // Important! Always set the container height explicitly
       <div style={{ height: '100%', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.GOOGLE_API_KEY }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
           defaultCenter={center}
           defaultZoom={11}
           // onGoogleApiLoaded={({map, maps}) => renderMarkers(map, maps)}
