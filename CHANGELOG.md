@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.6.1...v1.6.2) (2021-03-04)
+
+
+### Bug Fixes
+
+* fixed broken unit tests ([6568fbd](https://github.com/michaelpeterswa/guwt-admin-panel/commit/6568fbd794ee272f4c07f4a3f8f838098210b183))
+
 ### [1.6.1](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.6.0...v1.6.1) (2021-03-04)
 
 ## [1.6.0](https://github.com/michaelpeterswa/guwt-admin-panel/compare/v1.5.0...v1.6.0) (2021-03-03)
