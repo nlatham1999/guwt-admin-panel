@@ -37,6 +37,7 @@ const Home = ({organizationData}) => {
     );
   }
 
+
   if(deleteTour){
     deleteTourFunc();
   }
@@ -44,7 +45,7 @@ const Home = ({organizationData}) => {
   return (
     <div>
       {/* display the list of tour cells */}
-      <Card style={{ width: '48rem', marginTop: '2%'}}>
+      <Card style={{ width: '100%', marginTop: '2%'}}>
         <Card.Body>
           {tourData.map((tour, i) => (
                 <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData} setDeleteTour={setDeleteTour}/>

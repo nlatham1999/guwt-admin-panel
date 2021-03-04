@@ -1,12 +1,12 @@
 //this is a cell for displaying a tour in the list of tours within the home view
 
-import React from "react";
+import React, {useState} from "react";
 // import axios from "axios";
 
 //import all the bootsrap stuff
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Row } from "react-bootstrap";
+import { Row, FormCheck } from "react-bootstrap";
 
 //tour cell component
 //parameters:
@@ -16,6 +16,8 @@ import { Row } from "react-bootstrap";
 //  tours: the list of tours
 //  setTours: sets the tours
 const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTour}) => {
+
+    const [enabled, setEnabled] = useState(true); //tours[tourIndex].enabled
 
     return (
         //display the tour name and #of stops, and delete, info, and edit buttons
@@ -33,12 +35,18 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
                 <Button style={{marginRight: '1%'}} column sm={3} onClick={() => editTourButton()}>
                     Edit Tour
                 </Button>
-                <Button  variant="warning" column sm={3} onClick={() => deleteTourButton()}>
+                <Button style={{marginRight: '1%'}} variant="warning" column sm={3} onClick={() => deleteTourButton()}>
                     Delete Tour
                 </Button>
+                <FormCheck id={tourIndex+1} type="switch" label="Enable" defaultChecked={enabled} onChange={() => handleSwitchChange()}/>
             </Form.Group>
         </Form>
     );
+
+    function handleSwitchChange(){
+        setEnabled(!enabled);
+        //tours[tourIndex].enabled = enabled
+    }
 
     //handles the edit tour button
     function editTourButton(){
