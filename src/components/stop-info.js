@@ -11,24 +11,20 @@ import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 
-const TourInfo = ({setShowTourInfo, tour}) => {
-  
-    const [show, setShow] = useState(true);     //used t
-
-    console.log("entering")
+const StopInfo = ({setShowStopInfo, stop}) => {
 
     //displays the form for creating a new organization
     return (
         <Modal show={true} onHide={() => closeModal()} centered>
             <Modal.Header closeButton>
-                <Modal.Title>{tour.name}</Modal.Title>
+                <Modal.Title>{stop.stop_name}</Modal.Title>
             </Modal.Header>
 
 
             <Modal.Body>
                 <Form>
                     <Form.Label>
-                        {tour.description}
+                        {stop.stop_desc}
                     </Form.Label>
                 </Form>
             </Modal.Body>
@@ -36,8 +32,8 @@ const TourInfo = ({setShowTourInfo, tour}) => {
     );
 
     function closeModal(){
-        setShowTourInfo(false);
+        setShowStopInfo(false);
     }
 }
 
-export default TourInfo;
+export default StopInfo;
