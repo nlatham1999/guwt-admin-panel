@@ -1,4 +1,4 @@
-This is the documentation for the frontend of the admin panel
+This is the documentation for the frontend of the admin panel.
 
 OVERVIEW
 this is written in react.js, if you're not fammilier with the language, W3 schools has some great rescoures
