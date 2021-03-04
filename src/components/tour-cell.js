@@ -16,15 +16,15 @@ import TourInfo from "./tour-info";
 //  setTourIndex: sets the tour index: used for referenceing which tour was selected in the tour edit mode
 //  tours: the list of tours
 //  setTours: sets the tours
-const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTour}) => {
+const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTour, setToggleEnable}) => {
 
-    const [enabled, setEnabled] = useState(true); //tours[tourIndex].enabled
+    const [enabled, setEnabled] = useState(false); //tours[tourIndex].enabled
     const [showTourInfo, setShowTourInfo] = useState(false);
 
+    console.log(tours[tourIndex])
     return (
         //display the tour name and #of stops, and delete, info, and edit buttons
         <>
-        {console.log(showTourInfo)}
         {showTourInfo && <TourInfo setShowTourInfo={setShowTourInfo} tour={tours[tourIndex]}/>}
         <Form>
             <Form.Group as={Row}>
@@ -43,14 +43,15 @@ const TourCell = ({setTourEditMode, tourIndex, setTourIndex, tours,  setDeleteTo
                 <Button style={{marginRight: '1%'}} variant="warning" column sm={3} onClick={() => deleteTourButton()}>
                     Delete Tour
                 </Button>
-                <FormCheck id={tourIndex+1} type="switch" label="Enable" defaultChecked={enabled} onChange={() => handleSwitchChange()}/>
+                <FormCheck id={tourIndex+1} type="switch" label="Enable" defaultChecked={tours[tourIndex].enabled} onChange={() => handleSwitchChange()}/>
             </Form.Group>
         </Form>
         </>
     );
 
     function handleSwitchChange(){
-        setEnabled(!enabled);
+        setTourIndex(tourIndex)
+        setToggleEnable(true)
         //tours[tourIndex].enabled = enabled
     }
 

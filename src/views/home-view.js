@@ -28,6 +28,7 @@ const Home = ({organizationData}) => {
   const [deleteTour, setDeleteTour] = useState(false); //determines whether to delete a tour or not
   const [refresh, setRefresh] = useState(false); //call this when you want to rerender. kinda hacky but it works
   const [showTourInfo, setShowTourInfo] = useState(false);
+  const [toggleEnable, setToggleEnable] = useState(false);
 
   useEffect(() => {
     loadTours();
@@ -40,8 +41,12 @@ const Home = ({organizationData}) => {
     );
   }
 
-  
-
+  if(toggleEnable){
+    tourData[tourIndex].enabled = !tourData[tourIndex].enabled
+    console.log(tourData[tourIndex].enabled)
+    updateTour();
+    setToggleEnable(false)
+  }
 
   if(deleteTour){
     deleteTourFunc();
@@ -55,7 +60,7 @@ const Home = ({organizationData}) => {
       <Card style={{ width: '100%', marginTop: '2%'}}>
         <Card.Body>
           {tourData.map((tour, i) => (
-                <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData}/>
+                <TourCell setTourEditMode={setTourEditMode} tourIndex={i} setTourIndex={setTourIndex} tours={tourData} setDeleteTour={setDeleteTour} setToggleEnable={setToggleEnable}/>
           ))}
         </Card.Body>
       </Card>
@@ -91,7 +96,8 @@ const Home = ({organizationData}) => {
       organization: organizationData.name,
       description: "description",
       stops: [],
-      number_of_stops: 0
+      number_of_stops: 0,
+      enabled: false
     }
     axios
     .post(
@@ -106,6 +112,25 @@ const Home = ({organizationData}) => {
 
     loadTours();
     // setRefresh(!refresh);
+  }
+
+  function updateTour(){
+    console.log("updating the tour")
+    axios
+    .put(
+      'https://backend.gonzagatours.app/tour/t/' + tourData[tourIndex]._id, 
+      tourData[tourIndex],
+      {
+          'headers': {
+              'Authentication': process.env.REACT_APP_API_KEY
+          }
+    })
+    .then((response) => {
+        console.log("finished updating the tour")
+        loadTours()
+        setRefresh(!refresh)
+    }
+    )
   }
 
     //gets the tours from the database
