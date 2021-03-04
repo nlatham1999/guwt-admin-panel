@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from "react";
-import OrganizationMainPage from '../organizationMainPageView';
+import OrganizationMainPage from '../organization-main-page-view';
 
 const orgData = {
     "name": "test"

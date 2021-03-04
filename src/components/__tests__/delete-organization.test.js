@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from "react";
-import ButtonWithDropDownCmp from '../buttonDropDownCmp.js';
+import DeleteOrganization from '../delete-organization';
 
 it("renders without crashing", () => {
-    shallow(<ButtonWithDropDownCmp />);
+    shallow(<DeleteOrganization />);
 });

@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from "react";
-import AuthNav from '../auth-nav.js';
+import SelectOrganization from '../select-organization-view';
 
 it("renders without crashing", () => {
-    shallow(<AuthNav />);
+    shallow(<SelectOrganization />);
 });

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 // import {GoogleApiWrapper} from 'google-maps-react';
 import GoogleMapReact from 'google-map-react';
-import pic from '../images/google-map-marker-png-1.jpg';
+// import pic from '../images/google-map-marker-png-1.jpg';
 import { Icon } from '@iconify/react'
 import mapMarker from '@iconify-icons/mdi/map-marker';
 

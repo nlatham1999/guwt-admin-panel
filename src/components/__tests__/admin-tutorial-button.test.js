@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from "react";
-import Home from '../homeView.js';
+import AdminTutorialButton from '../admin-tutorial-button';
 
 it("renders without crashing", () => {
-    shallow(<Home />);
+    shallow(<AdminTutorialButton />);
 });
