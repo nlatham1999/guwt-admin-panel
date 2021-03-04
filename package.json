@@ -1,6 +1,6 @@
 {
   "name": "guwt-admin-panel",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.1.0",
@@ -29,6 +29,9 @@
     "release": "standard-version"
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@iconify-icons)"
+    ],
     "coverageReporters": [
       "text",
       "cobertura"
