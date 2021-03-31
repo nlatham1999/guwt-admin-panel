@@ -11,8 +11,11 @@ RUN npm i
 
 # Bundle app source
 COPY . .
+
+RUN npm run build
+
 # Expose port 5000
 EXPOSE 5000
 
 # run npm start
-CMD "npm run build && serve -s build"
+CMD "serve -s build"
