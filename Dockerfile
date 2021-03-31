@@ -8,6 +8,7 @@ COPY package*.json ./
 
 # If you are building your code for production
 RUN npm i
+RUN npm i -g serve
 
 # Bundle app source
 COPY . .
