@@ -19,4 +19,4 @@ RUN npm run build
 EXPOSE 5000
 
 # run npm start
-CMD ["serve", "-s build"]
+CMD ["serve", "-s", "build"]
