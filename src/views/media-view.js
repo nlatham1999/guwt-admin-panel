@@ -146,7 +146,7 @@ const MediaView = ({tour_id, stop_id, stops, stopIndex}) => {
             var m
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-                console.log("test7", element)
+                // console.log("test7", element)
                 var temp = {
                     id: element.s3_id,
                     s3_loc: element.s3_loc

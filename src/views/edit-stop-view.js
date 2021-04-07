@@ -22,8 +22,6 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
     stops[stopIndex].lat = stopLatLng.lat.toString();
     stops[stopIndex].lng = stopLatLng.lng.toString();
 
-    console.log(stops[stopIndex]);
-
     return (
         <div>
             <Card style={{marginTop: '2%'}}>
