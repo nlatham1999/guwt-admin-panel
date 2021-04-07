@@ -97,7 +97,7 @@ const EditTour = ({setTourEditMode, tours, tourIndex, loadTours}) => {
             stop_desc: "description",
             stop_number: tours[tourIndex].stops.length,
             lat: "47.668679",
-            long: "-117.411120",
+            lng: "-117.411120",
             media: []
         }
         tours[tourIndex].stops.push(stop);

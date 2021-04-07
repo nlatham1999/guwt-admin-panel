@@ -16,11 +16,11 @@ import { Component } from "react";
 
 const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour_id}) => {
 
-    const [stopLatLng, setStopLatLng] = useState({lat: parseFloat(stops[stopIndex].lat), lng: parseFloat(stops[stopIndex].long)})
+    const [stopLatLng, setStopLatLng] = useState({lat: parseFloat(stops[stopIndex].lat), lng: parseFloat(stops[stopIndex].lng)})
     // console.log(stopLatLng.lat)
 
     stops[stopIndex].lat = stopLatLng.lat.toString();
-    stops[stopIndex].long = stopLatLng.lng.toString();
+    stops[stopIndex].lng = stopLatLng.lng.toString();
 
     return (
         <div>
@@ -72,6 +72,15 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
                                 <Form.Control disabled={true} placeholder={stopLatLng.lng} onChange={(event) => setLongitudeFromInput(event)}/>
                                 </Col>
                             </Form.Group>
+
+                            <Form.Group as={Row} controlId="formHorizontalEmail">
+                                <Form.Label column sm={4}>
+                                Media Credits
+                                </Form.Label>
+                                <Col sm={8}>
+                                <Form.Control placeholder={stops[stopIndex].stop_desc} onChange={(event) => setDescriptionFromInput(event)}/>
+                                </Col>
+                            </Form.Group>
                         </Form>
                     </Col>
                 </Row>
@@ -115,7 +124,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
     }
 
     function setLongitudeFromInput(event){
-        stops[stopIndex].lon = event.target.value;
+        stops[stopIndex].lng = event.target.value;
         stopLatLng.lng = parseFloat(event.target.value);
         // console.log("test 4")
         // setTriggerUpdateTour(true);
