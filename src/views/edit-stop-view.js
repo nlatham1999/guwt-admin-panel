@@ -22,6 +22,8 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
     stops[stopIndex].lat = stopLatLng.lat.toString();
     stops[stopIndex].lng = stopLatLng.lng.toString();
 
+    console.log(stops[stopIndex]);
+
     return (
         <div>
             <Card style={{marginTop: '2%'}}>
@@ -91,7 +93,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
             <Card style={{marginTop: '2%'}}>
             <Card.Header>Stop Media</Card.Header>
             <div style={{margin: '1%'}}>
-            <MediaView tour_id={tour_id} stop_id={stops[stopIndex]._id}/>
+            <MediaView tour_id={tour_id} stop_id={stops[stopIndex]._id} stops={stops} stopIndex={stopIndex}/>
             </div>
             </Card>
         </div>
