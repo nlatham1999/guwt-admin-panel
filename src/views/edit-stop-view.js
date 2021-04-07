@@ -78,7 +78,7 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
                                 Media Credits
                                 </Form.Label>
                                 <Col sm={8}>
-                                <Form.Control placeholder={stops[stopIndex].stop_desc} onChange={(event) => setDescriptionFromInput(event)}/>
+                                <Form.Control placeholder={stops[stopIndex].media_desc} onChange={(event) => setMediaDescriptionFromInput(event)}/>
                                 </Col>
                             </Form.Group>
                         </Form>
@@ -109,6 +109,11 @@ const EditStop = ({setEditStopMode, stops, stopIndex, setTriggerUpdateTour, tour
     function setNameFromInput(event){
         stops[stopIndex].stop_name = event.target.value;
         // console.log("test 1")
+    }
+
+    function setMediaDescriptionFromInput(event){
+        stops[stopIndex].media_desc = event.target.value;
+        // console.log("test 2")
     }
 
     function setDescriptionFromInput(event){
